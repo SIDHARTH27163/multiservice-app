@@ -8,6 +8,15 @@ export default {
   ],
   theme: {
     extend: {},
+    fontFamily:{
+      Robotoregular:['Roboto-regular'],
+      playwrite:['playwrite'],
+      Robotomedium:['Roboto-medium'],
+      MerriweatherLight:['Merriweather-Light'],
+      MerriweatherRegular:['Merriweather-Regular'],
+      Montserrat:['Montserrat']
+
+    }
   },
   plugins: [
     require('flowbite/plugin')
