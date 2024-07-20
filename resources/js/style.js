@@ -80,7 +80,7 @@ function updateActiveState() {
   
   // Remove border from all items
   items.forEach((item) => {
-    item.querySelector('div > div').classList.remove("border-rose-400", "border", "border-solid", "shadow-lg", "scale-105", "duration-700", "ease-in-out");
+    item.querySelector('div > div').classList.remove("border-rose-400", "border", "border-solid", "mt-12", "duration-700", "ease-in-out");
   });
 
   // Calculate visible items count based on screen width
@@ -98,6 +98,6 @@ function updateActiveState() {
 
   if (centerIndex >= 0 && centerIndex < items.length) {
     // Add border to the currently active item
-    items[centerIndex].querySelector('div > div').classList.add("border-rose-400", "border", "border-solid", "shadow-lg", "scale-105", "duration-700", "ease-in-out");
+    items[centerIndex].querySelector('div > div').classList.add("border-rose-400", "border", "border-solid", "mt-12", "duration-700", "ease-in-out");
   }
 }
