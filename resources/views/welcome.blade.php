@@ -9,10 +9,7 @@
     <title>Lookin Dharamshala</title>
 
     <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet" />
-
-    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet" />
-
+  
     <meta name="description" content="" />
     <meta name="keywords"
         content="  dharamshala ,Dharamshala tourist attractions,lookin dharamshala Things to do in Dharamshala, lookin , look in , lookin dharamshala,Dharamshala travel tips , dharamshalacity , Dharamshala adventure activities" />
@@ -83,45 +80,97 @@
 
 
     @include('components/multiplecrousel')
-    <section>
-        <div class="max-w-7xl mx-auto py-5">
-            <div class="flex items-center justify-center">
-                <div class="flex flex-col items-center text-center">
-                    <div class="bg-gradient-to-br from-[#F76680] to-[#57007B] h-[5px] w-[69px]" aria-hidden="true">
-                    </div>
-                    <h2 class="mt-5 text-4xl font-bold text-gray-900 leading-[55px] max-w-[474px]">
-                        Our recent<br>Case studies
-                    </h2>
-                </div>
+    @include('components/testimonial')
+    <section class="flex flex-col mt-10 px-3 ">
+  <div class="flex flex-col w-full bg-slate-0 max-md:max-w-full">
+  <header class="flex flex-col  mt-2 text-4xl font-bold text-center text-gray-900 leading-[55px] max-md:mt-10 max-md:max-w-full">
+          <div class="shrink-0 self-center bg-[linear-gradient(225deg,#F76680_0%,#57007B_100%)] h-[5px] w-[69px]" aria-hidden="true"></div>
+          <h2 class="mt-5 max-md:max-w-full">
+            <span>Our recent</span>
+            <br />
+            Case studies
+          </h2>
+        </header>
+        <div class="flex gap-0 items-start self-start"></div>
+    <div class="flex z-10 flex-col self-center justify-center mt-0 w-full max-w-7xl max-md:max-w-full">
+      <div class="mt-10 max-md:mt-10 max-md:max-w-full">
+        <div class="flex gap-5 max-md:flex-col max-md:gap-0">
+          <div class="flex flex-col w-[45%] max-md:ml-0 max-md:w-full">
+            <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/871100c6269ded50c3e2145a4e2e280f67bce818dfacd363ace37e5ae907d1ec?apiKey=c81a87a8b87043acac16b0e47d857063&" alt="Case study image" class="grow w-full aspect-[1.45] max-md:max-w-full" />
+          </div>
+          <article class="flex flex-col ml-5 w-[55%] max-md:ml-0 max-md:w-full">
+            <div class="flex flex-col grow justify-center items-end px-16 py-20 w-full text-sm font-semibold bg-indigo-50 rounded-none border border-solid border-zinc-200 max-md:px-5 max-md:max-w-full">
+              <div class="flex flex-col justify-end max-w-full bg-indigo-50 w-[529px]">
+                <h3 class="text-3xl leading-10 text-center text-gray-700 max-md:max-w-full">
+                  Website Design for SCFC Canada
+                </h3>
+                <p class="mt-8 leading-6 text-slate-600 max-md:max-w-full">
+                  Born out of a vision, a single-minded objective that puts service before anything else, Swift Clearance and Forwarding Corp. surging forth to deliver the best services in the shipping and logistics scenario. Its meteoric rise stems out of a solid foundation. The management boasts of over 20 years of rich and varied experience in the shipping and freight forwarding industry.
+                </p>
+                <a href="#" class="flex gap-1.5 justify-center self-end mt-16 leading-[100%] max-md:mt-10">
+                  <span class="bg-clip-text bg-[linear-gradient(225deg,#F76680_0%,#57007B_100%)]">Read more</span>
+                  <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/ea6c3bb04e973a0e2b0d8584f70941c382f4d4bd1c9ca23d70703abd5b16388b?apiKey=c81a87a8b87043acac16b0e47d857063&" alt="" class="shrink-0 w-4 aspect-square" />
+                </a>
+              </div>
             </div>
-            <section class="flex gap-5 max-md:flex-col max-md:gap-0 py-7">
-  <div class="flex flex-col w-6/12 max-md:ml-0 max-md:w-full">
-    <div class="flex flex-col px-5 max-md:mt-10 max-md:max-w-full">
-      <div class="shrink-0 bg-[linear-gradient(225deg,#F76680_0%,#57007B_100%)] h-[5px] w-[69px]"></div>
-      <h2 class="mt-5 text-4xl font-bold text-gray-900 leading-[55px] max-md:max-w-full">
-        <span>Leading companies trust us</span> to develop software
-      </h2>
-      <p class="mt-8 text-lg leading-9 bg-clip-text bg-[linear-gradient(225deg,#F76680_0%,#57007B_100%)] text-slate-500 max-md:max-w-full">
-        We add development capacity to tech teams. Our value isn't limited to building teams but is equally distributed across the project lifecycle. We are a custom software development company that guarantees the successful delivery of your project.
-      </p>
-      <a href="#" class="flex gap-4 self-start mt-12 text-base font-medium leading-6 text-purple-900 max-md:mt-10">
-        <span>See more Informations</span>
-        <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/f4086fb3264438523ce2843ae770d39358da4a0834b8e1fb07a085951208a82e?apiKey=c81a87a8b87043acac16b0e47d857063&" class="shrink-0 self-start w-6 aspect-square" alt="Arrow icon" />
+          </article>
+        </div>
+      </div>
+      <div class="mt-9 max-md:max-w-full">
+        <div class="flex gap-5 max-md:flex-col max-md:gap-0">
+          <div class="flex flex-col w-[45%] max-md:ml-0 max-md:w-full">
+            <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/4856263a57bb24a910ff1150d65c50c109c838fceff5ee325d99f1daf847782f?apiKey=c81a87a8b87043acac16b0e47d857063&" alt="Case study image" class="grow w-full aspect-[1.45] max-md:max-w-full" />
+          </div>
+          <article class="flex flex-col ml-5 w-[55%] max-md:ml-0 max-md:w-full">
+            <div class="flex flex-col grow justify-center items-end px-16 py-20 w-full text-sm font-semibold bg-green-50 rounded-none border border-solid border-zinc-200 max-md:px-5 max-md:max-w-full">
+              <div class="flex flex-col justify-end max-w-full bg-green-50 w-[529px]">
+                <h3 class="text-3xl leading-10 text-center text-gray-700 max-md:max-w-full">
+                  Website Design for SCFC Canada
+                </h3>
+                <p class="mt-8 leading-6 text-slate-600 max-md:max-w-full">
+                  Born out of a vision, a single-minded objective that puts service before anything else, Swift Clearance and Forwarding Corp. surging forth to deliver the best services in the shipping and logistics scenario. Its meteoric rise stems out of a solid foundation. The management boasts of over 20 years of rich and varied experience in the shipping and freight forwarding industry.
+                </p>
+                <a href="#" class="flex gap-1.5 justify-center self-end mt-16 leading-[100%] max-md:mt-10">
+                  <span class="bg-clip-text bg-[linear-gradient(225deg,#F76680_0%,#57007B_100%)]">Read more</span>
+                  <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/6c01bd49c2db96b9d7c7abdf0ad1a6c97d92fa170dbd7d26ea38f28201dfb00e?apiKey=c81a87a8b87043acac16b0e47d857063&" alt="" class="shrink-0 w-4 aspect-square" />
+                </a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+      <div class="mt-9 max-md:max-w-full">
+        <div class="flex gap-5 max-md:flex-col max-md:gap-0">
+          <div class="flex flex-col w-[45%] max-md:ml-0 max-md:w-full">
+            <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/7c8a627b821623e828bcf4fdaa15c84ea86dd93e0adc13d06401b8766cf31acf?apiKey=c81a87a8b87043acac16b0e47d857063&" alt="Case study image" class="grow w-full aspect-[1.45] max-md:max-w-full" />
+          </div>
+          <article class="flex flex-col ml-5 w-[55%] max-md:ml-0 max-md:w-full">
+            <div class="flex flex-col grow justify-center items-end px-16 py-20 w-full text-sm font-semibold bg-red-50 rounded-none border border-solid border-zinc-200 max-md:px-5 max-md:max-w-full">
+              <div class="flex flex-col justify-end max-w-full bg-red-50 w-[529px]">
+                <h3 class="text-3xl leading-10 text-center text-gray-700 max-md:max-w-full">
+                  Website Design for SCFC Canada
+                </h3>
+                <p class="mt-8 leading-6 text-slate-600 max-md:max-w-full">
+                  Born out of a vision, a single-minded objective that puts service before anything else, Swift Clearance and Forwarding Corp. surging forth to deliver the best services in the shipping and logistics scenario. Its meteoric rise stems out of a solid foundation. The management boasts of over 20 years of rich and varied experience in the shipping and freight forwarding industry.
+                </p>
+                <a href="#" class="flex gap-1.5 justify-center self-end mt-16 leading-[100%] max-md:mt-10">
+                  <span class="bg-clip-text bg-[linear-gradient(225deg,#F76680_0%,#57007B_100%)]">Read more</span>
+                  <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/86a68469691f9c57c554f905ca71c7152ff8a7a7cf5c2723207de9a0c08b9e34?apiKey=c81a87a8b87043acac16b0e47d857063&" alt="" class="shrink-0 w-4 aspect-square" />
+                </a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+      <a href="#" class="flex gap-3 self-end px-5 mt-10 text-xl font-semibold leading-7 max-md:mt-10">
+        <span class="bg-clip-text bg-[linear-gradient(225deg,#F76680_0%,#57007B_100%)]">Read more case studies</span>
+        <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/0e4ba3a40d483a16082cd5703b96b5331f73bdd62915d3b19454571a32f167d8?apiKey=c81a87a8b87043acac16b0e47d857063&" alt="" class="shrink-0 aspect-square w-[27px]" />
       </a>
     </div>
-  </div>
-  <div class="flex flex-col ml-5 w-6/12 max-md:ml-0 max-md:w-full">
-    <div class="flex overflow-hidden relative flex-col grow justify-center min-h-[460px] max-md:mt-10 max-md:max-w-full">
-      <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/31eeabea2a3732abeae8a01348d777d15bd599422e4a1fd69ffdc65da18582f6?apiKey=c81a87a8b87043acac16b0e47d857063&" class="object-cover absolute inset-0 size-full" alt="Background image" />
-      <div class="flex relative justify-center items-center px-16 py-20 rounded-3xl backdrop-blur-[2px] bg-black bg-opacity-0 max-md:px-5 max-md:max-w-full">
-        <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/24d32f49225df821bd8b8f135d49d63556f674f1a983a9ead7f6bd789140562e?apiKey=c81a87a8b87043acac16b0e47d857063&" class="mt-28 mb-20 aspect-square w-[78px] max-md:my-10" alt="Company logo" />
-      </div>
-    </div>
+    <hr class="mt-20 w-full border border-solid bg-zinc-200 border-zinc-200 min-h-[1px] max-md:mt-10 max-md:max-w-full" />
   </div>
 </section>
-        </div>
-    </section>
-    <section class="flex flex-col max-w-7xl mx-auto">
+    <section class="flex flex-col max-w-7xl mx-auto px-3">
     <div class="flex items-center justify-center">
                 <div class="flex flex-col items-center text-center">
                     <div class="bg-gradient-to-br from-[#F76680] to-[#57007B] h-[5px] w-[69px]" aria-hidden="true">
