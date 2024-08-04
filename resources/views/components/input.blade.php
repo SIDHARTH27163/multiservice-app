@@ -1,5 +1,5 @@
 <!-- resources/views/components/input.blade.php -->
-@props(['name', 'type' => 'text', 'value' => '', 'placeholder' => ' ', 'class' => '', 'id' => '', 'label' => ''])
+@props(['name', 'type' => 'text', 'value' => '', 'placeholder' => ' ', 'class' => '', 'id' => '', 'label' => '','error'=>''])
 
 
 
@@ -19,5 +19,7 @@
 
 
 
+
     </label>
+    <p class="text-red-600 text-sm mt-2 font-playwrite ">{{$error}}</p>
 </div>
