@@ -45,7 +45,7 @@ class ITServiceController extends Controller
         return view('admin.manage-itservices', compact('itService')); // Use the same template for edit view
     }
 
-    public function update(Request $request, ITService $itService)
+    public function update(Request $request, ITService $itService , $id)
     {
         $request->validate([
             'name' => 'required|string|max:255',

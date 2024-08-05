@@ -7,14 +7,7 @@
 
 @include('components.heading', ['headingText' => 'Manage IT Services Here', 'headingClass' => 'text-2xl font-semibold font-Montserrat text-gray-950'])
 
-<div class="p-3 my-5">
-    @if(session('success'))
-    @include('components.success-alert', [
-        'class' => 'font-playwrite font-white',
-        'msg' => session('success')
-    ])
-@endif
-</div>
+
 
 
 <div class="max-w-6xl mx-auto p-2 flex justify-center py-8">
@@ -56,6 +49,14 @@
             'class' => 'font-Montserrat select-none rounded-lg bg-gradient-to-tr from-slate-950 to-gray-800 py-3 px-6 text-center align-middle font-sans text-ls font-bold uppercase text-white shadow-md shadow-gray-900/10 transition-all hover:shadow-lg hover:shadow-gray-900/20 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none'
         ])
     </form>
+</div>
+<div class="p-3 my-5">
+    @if(session('success'))
+    @include('components.success-alert', [
+        'class' => 'font-playwrite font-white',
+        'msg' => session('success')
+    ])
+@endif
 </div>
 @if(isset($itServices))
 <div class="container w-full   mx-auto px-2">
