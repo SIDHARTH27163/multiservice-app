@@ -9,9 +9,9 @@
       <textarea
            type="{{ $type }}"
            name="{{ $name }}"
-          value="{{ $value }}"
+
           id="{{ $id }}"
-          class="flex-grow bg-transparent outline-none px-4 py-2 leading-9 rounded-md  {{$class}} " rows="2"></textarea>
+          class="flex-grow bg-transparent outline-none px-4 py-2 leading-9 rounded-md  {{$class}} " rows="2">{{ $value }}</textarea>
 
       <span class="absolute font-Montserrat  transform -translate-y-8 left-2 transition leading-10 group-focus-within:-translate-y-20 text-slate-900">
         {{ $label }}

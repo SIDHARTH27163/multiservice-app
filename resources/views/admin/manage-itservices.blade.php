@@ -11,34 +11,41 @@
 
 
 <div class="max-w-6xl mx-auto p-2 flex justify-center py-8">
-    <form action="{{ route('manageitservices.store') }}" method="post" enctype="multipart/form-data" class="lg:w-3/4 md:w-3/4 sm:w-3/4 w-full bg-white p-4 rounded-lg shadow-lg">
+    <form action="{{ isset($itService) ? route('manageitservices.update', $itService->id) : route('manageitservices.store') }}" method="post" enctype="multipart/form-data" class="lg:w-3/4 md:w-3/4 sm:w-3/4 w-full bg-white p-4 rounded-lg shadow-lg">
         @csrf
+        @if(isset($itService))
+        @method('put')
+    @else
         @method('post')
+    @endif
         @include('components.input', [
             'name' => 'name',
             'type' => 'text',
-            'value' => old('name'),
+
             'placeholder' => 'Enter the name',
             'class' => 'border border-rose-500 font-Montserrat',
             'id' => 'name-input',
             'label' => "Enter Name",
-            'error' => $errors->first('name')
+            'error' => $errors->first('name'),
+            'value' => isset($itService) ? $itService->name : ''
         ])
 
         @include('components.textarea', [
             'name' => 'description',
-            'value' => old('description'),
+
             'placeholder' => 'Enter description',
             'class' => 'border border-rose-500 font-Montserrat',
             'id' => 'description-input',
             'label' => "Enter Description",
-            'error' => $errors->first('description')
+            'error' => $errors->first('description'),
+             'value' => isset($itService) ? $itService->description : ''
         ])
 
         @include('components.file', [
             'name' => 'image',
             'label' => "Choose Image",
-            'error' => $errors->first('image')
+            'error' => $errors->first('image'),
+            'value'=>''
         ])
 
         @include('components.button', [
@@ -47,7 +54,8 @@
             'label' => "Submit",
             'role' => 'submit',
             'class' => 'font-Montserrat select-none rounded-lg bg-gradient-to-tr from-slate-950 to-gray-800 py-3 px-6 text-center align-middle font-sans text-ls font-bold uppercase text-white shadow-md shadow-gray-900/10 transition-all hover:shadow-lg hover:shadow-gray-900/20 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none'
-        ])
+
+       ])
     </form>
 </div>
 <div class="p-3 my-5">
@@ -149,7 +157,7 @@
                                 <th scope="col" class="px-4 py-3">Description</th>
                                 <th scope="col" class="px-4 py-3">Image</th>
                                 <th scope="col" class="px-4 py-3">
-                                    <span class="sr-only">Actions</span>
+                                    <span >Actions</span>
                                 </th>
                             </tr>
                         </thead>
@@ -163,13 +171,13 @@
                                 <td class="px-4 py-3">{{$service->description}}</td>
                                 <td class="px-4 py-3"><img src="{{ asset('storage/' . $service->image) }}" alt="Image" width="100"></td>
 
-                                <td class="px-4 py-3 flex items-center justify-end">
-                                    <a href="{{ route('manageitservices.edit', $service->id) }}" class="btn btn-warning text-amber-600 mx-5">Edit</a>
-                                    <form action="{{ route('manageitservices.destroy', $service->id) }}" method="POST" style="display:inline;">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="btn text-red-600">Delete</button>
-                                    </form>
+                                <td class="px-4 py-3 flex items-center  gap-3">
+                                    <a href="{{ route('manageitservices.edit', $service->id) }}" class="text-blue-600 hover:underline">Edit</a>
+            <form action="{{ route('manageitservices.destroy', $service->id) }}" method="POST" style="display:inline;">
+                @csrf
+                @method('DELETE')
+                <button type="submit" class="text-red-600 hover:underline">Delete</button>
+            </form>
                                 </td>
                             </tr>
                            @endforeach
