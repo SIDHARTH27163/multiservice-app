@@ -19,7 +19,7 @@
     @vite('resources/js/app.js')
 </head>
 
-<body class="leading-normal tracking-normal bg-gray-100 " style="font-family: 'Roboto Flex', sans-serif;">
+<body class="leading-normal tracking-normal " style="font-family: 'Roboto Flex', sans-serif;">
 
 
 
@@ -32,7 +32,7 @@
     </button>
 
     <aside id="default-sidebar" class="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0" aria-label="Sidebar">
-       <div class="h-full px-3 py-4 overflow-y-auto  bg-gray-800">
+       <div class="h-full px-3 py-4 overflow-y-auto  bg-slate-950">
           <ul class="space-y-2 font-medium">
 
              <li>
@@ -195,7 +195,7 @@
        </div>
     </aside>
 
-    <div class="p-4 sm:ml-64   text-black h-full">
+    <div class="p-4 sm:ml-64   text-black h-screen overflow-y-auto bg-slate-950 ">
        @yield('content')
     </div>
 
