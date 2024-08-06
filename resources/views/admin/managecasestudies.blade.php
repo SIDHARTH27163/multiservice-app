@@ -6,7 +6,7 @@
 <div class="p-4 bg-gray-100 h-screen overflow-y-auto rounded-lg font-Robotomedium">
     @include('components.heading', ['headingText' => 'Manage Case Studies Here', 'headingClass' => 'text-2xl font-normal font-Robotomedium text-rose-950 whitespace-nowrap leading-relaxed'])
 
-    <div class="container w-full   mx-auto flex justify-center py-8">
+    <div class="container w-full   mx-auto flex justify-center py-4">
         <form action="{{ isset($casestudy) ? route('managecasestudies.update', $casestudy->id) : route('managecasestudies.store') }}" method="post" enctype="multipart/form-data" class="lg:w-3/4 md:w-3/4 sm:w-3/4 w-full bg-white p-4 rounded-lg shadow-lg">
             @csrf
             @if(isset($casestudy))
@@ -53,7 +53,7 @@
         </form>
     </div>
 
-    <div class="p-3 my-5">
+    <div class="p-3 my-1">
         @if(session('success'))
             @include('components.success-alert', [
                 'class' => 'font-playwrite font-white',
@@ -92,7 +92,7 @@
                                     <th scope="col" class="px-4 py-3">Image</th>
                                         <th scope="col" class="px-4 py-3">Title</th>
                                         <th scope="col" class="px-4 py-3">Description</th>
-                                        
+
                                         <th scope="col" class="px-4 py-3">Edit</th>
                                         <th scope="col" class="px-4 py-3">Delete</th>
                                     </tr>
@@ -105,7 +105,7 @@
                                             </td>
                                             <td class="px-4 py-3">{{ $casestudy->title }}</td>
                                             <td class="px-4 py-3">{{ $casestudy->description }}</td>
-                                           
+
                                             <td class="px-4 py-3">
                                                 <a href="{{ route('managecasestudies.edit', $casestudy->id) }}" class="text-blue-600 hover:underline"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
   <path stroke-linecap="round" stroke-linejoin="round" d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0 1 15.75 21H5.25A2.25 2.25 0 0 1 3 18.75V8.25A2.25 2.25 0 0 1 5.25 6H10" />

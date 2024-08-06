@@ -26,7 +26,7 @@
             'type' => 'text',
 
             'placeholder' => 'Enter the name',
-            'class' => 'border border-slate-950 font-Montserrat',
+            'class' => 'border border-slate-950 font-Montserrat bg-transparent',
             'id' => 'name-input',
             'label' => "Enter Name",
             'error' => $errors->first('name'),
