@@ -71,7 +71,7 @@
                       </li>
 
                       <li>
-                         <a href="manage_blogs_category" class="flex items-center w-full p-2  transition duration-75 rounded-lg pl-11 group  text-white hover:bg-gray-900 font-roboto">Manage Category</a>
+                         <a href="/admin/managecasestudies" class="flex items-center w-full p-2  transition duration-75 rounded-lg pl-11 group  text-white hover:bg-gray-900 font-roboto">Manage Case Studies</a>
                       </li>
 
 
