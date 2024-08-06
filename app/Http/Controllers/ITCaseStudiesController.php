@@ -99,9 +99,6 @@ class ITCaseStudiesController extends Controller
 
     public function destroy(ITCaseStudy $casestudy , $id)
     {
-
-
-
                         try {
                             // Find the ITService record by ID
                             $casestudy = ITCaseStudy::findOrFail($id);
