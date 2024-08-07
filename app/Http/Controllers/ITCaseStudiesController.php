@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Storage;
-
+use App\Models\Gallery;
 use App\Models\ITCaseStudy; // Assuming you have a model named ITCaseStudy
 use Illuminate\Http\Request;
 
@@ -97,11 +97,14 @@ class ITCaseStudiesController extends Controller
                         ->with('success', 'Case study updated successfully.');
     }
 
-    public function destroy(ITCaseStudy $casestudy , $id)
+    public function destroy( $id)
     {
                         try {
                             // Find the ITService record by ID
                             $casestudy = ITCaseStudy::findOrFail($id);
+                            if ($casestudy->image) {
+                                Storage::disk('public')->delete($casestudy->image);
+                            }
 
                             // Delete the record
                             $casestudy->delete();
@@ -116,5 +119,58 @@ class ITCaseStudiesController extends Controller
                             // Redirect with error message
                             return redirect()->route('managecasestudies.index')->with('error', 'Failed to delete IT Service.');
                         }
+    }
+    public function gallery($id)
+    {
+        $casestudy = ITCaseStudy::find($id);
+        if (!$casestudy) {
+            return redirect()->route('managecasestudies.index')->with('error', 'Case study not found.');
+        }
+
+        $galleries = Gallery::where('model_id', $id)->where('model_type', ITCaseStudy::class)->get();
+
+        return view('admin.casestudiesgallery', compact('casestudy', 'galleries'));
+    }
+
+    public function addImageToGallery(Request $request, $id)
+{
+    $request->validate([
+        'images.*' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+    ]);
+
+    $casestudy = ITCaseStudy::find($id);
+    if (!$casestudy) {
+        return redirect()->route('managecasestudies.index')->with('error', 'Case study not found.');
+    }
+
+    foreach ($request->file('images') as $image) {
+        $imagePath = $image->store('casestudy/gallery', 'public');
+
+        Gallery::create([
+            'model_id' => $casestudy->id,
+            'model_type' => ITCaseStudy::class,
+            'image' => $imagePath,
+        ]);
+    }
+
+    return redirect()->route('managecasestudies.index', $casestudy->id)
+                    ->with('success', 'Gallery images added successfully.');
+}
+
+
+    public function deleteImageFromGallery($id)
+    {
+        $gallery = Gallery::find($id);
+        if (!$gallery) {
+            return redirect()->back()->with('error', 'Image not found.');
+        }
+
+        // Delete the image file
+        Storage::disk('public')->delete($gallery->image);
+
+        // Delete the gallery record
+        $gallery->delete();
+
+        return redirect()->back()->with('success', 'Image deleted successfully.');
     }
 }

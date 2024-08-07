@@ -10,7 +10,7 @@
 
 
 
-    <div class="max-w-6xl w-full   mx-auto p-2 flex justify-center py-10 flex lg:flex-row md:flex-row sm:flex-col flex-col  gap-2 ">
+    <div class="max-w-6xl w-full   mx-auto p-2  justify-center py-10 flex lg:flex-row md:flex-row sm:flex-col flex-col  gap-2 ">
         <div class="lg:w-1/2 md:w-1/2 w-full  p-4 rounded-lg  flex items-center justify-center">
             <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/6edbac42fa6940652015227c93ee44b409217cc4e6a1b4138bd1d3fc9b1bbb01?apiKey=c81a87a8b87043acac16b0e47d857063&" alt="Illustration of a product team" class=" aspect-[1.19] h-72" />
         </div>
@@ -22,15 +22,14 @@
             @method('post')
             @endif
             @include('components.input', [
-            'name' => 'name',
-            'type' => 'text',
-
-            'placeholder' => 'Enter the name',
-            'class' => 'border border-slate-950 font-Montserrat bg-transparent',
-            'id' => 'name-input',
-            'label' => "Enter Name",
-            'error' => $errors->first('name'),
-            'value' => isset($itService) ? $itService->name : ''
+                'name' => 'name',
+                'type' => 'text',
+                'placeholder' => 'Enter the name',
+                'class' => 'border border-slate-950 font-Montserrat',
+                'id' => 'name-input',
+                'label' => "Enter name",
+                'error' => $errors->first('name'),
+                'value' => isset($itService) ? $itService->name : ''
             ])
 
             @include('components.textarea', [
@@ -162,6 +161,7 @@
                                     <th scope="col" class="px-4 py-3">
                                         <span>Actions</span>
                                     </th>
+
                                 </tr>
                             </thead>
                             <tbody>
@@ -173,10 +173,15 @@
 
 
                                     <td class="px-4 py-10 flex items-center  gap-3  ">
-                                        <a href="{{ route('manageitservices.edit', $service->id) }}" class="text-blue-600 hover:underline"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                                        <a href="{{ route('manageitservices.edit', $service->id) }}" class="text-yellow-600 hover:underline"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
                                                 <path stroke-linecap="round" stroke-linejoin="round" d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0 1 15.75 21H5.25A2.25 2.25 0 0 1 3 18.75V8.25A2.25 2.25 0 0 1 5.25 6H10" />
                                             </svg>
                                         </a>
+                                        <a href="{{ route('manageitservices.gallery', $service->id) }}" class="text-green-600 hover:underline"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="m2.25 15.75 5.159-5.159a2.25 2.25 0 0 1 3.182 0l5.159 5.159m-1.5-1.5 1.409-1.409a2.25 2.25 0 0 1 3.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 0 0 1.5-1.5V6a1.5 1.5 0 0 0-1.5-1.5H3.75A1.5 1.5 0 0 0 2.25 6v12a1.5 1.5 0 0 0 1.5 1.5Zm10.5-11.25h.008v.008h-.008V8.25Zm.375 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z" />
+                                          </svg>
+
+                                    </a>
                                         <form action="{{ route('manageitservices.destroy', $service->id) }}" method="POST" style="display:inline;">
                                             @csrf
                                             @method('DELETE')
