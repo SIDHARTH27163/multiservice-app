@@ -14,4 +14,9 @@ class ITCaseStudy extends Model
         'description',
         'image',
     ];
+    public function galleries()
+    {
+        return $this->hasMany(Gallery::class, 'foreign_key', 'local_key');
+        // replace 'foreign_key' and 'local_key' with actual column names
+    }
 }

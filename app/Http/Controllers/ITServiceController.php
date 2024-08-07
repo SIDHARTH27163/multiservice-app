@@ -103,7 +103,9 @@ public function update(Request $request, $id)
         try {
             // Find the ITService record by ID
             $itService = ITService::findOrFail($id);
-
+            if ($itService->image) {
+                Storage::disk('public')->delete($itService->image);
+            }
             // Delete the record
             $itService->delete();
 
