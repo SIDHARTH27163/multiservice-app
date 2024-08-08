@@ -15,7 +15,11 @@ Route::prefix('admin')->group(function () {
 
     // Resource routes for managing IT services
     Route::resource('manageitservices', ITServiceController::class)->except(['show']);
-
+    Route::prefix('manageitservices/{id}')->group(function () {
+        Route::get('gallery', [ITServiceController::class, 'gallery'])->name('manageitservices.gallery');
+        Route::post('gallery', [ITServiceController::class, 'addImageToGallery'])->name('manageitservices.addImageToGallery');
+        Route::delete('gallery/{imageId}', [ITServiceController::class, 'deleteImageFromGallery'])->name('manageitservices.deleteImageFromGallery');
+    });
     // Resource routes for managing case studies
     Route::resource('managecasestudies', ITCaseStudiesController::class)->except(['show']);
 
