@@ -11,13 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('casestudies', function (Blueprint $table) {
+        Schema::create('tips', function (Blueprint $table) {
             $table->id();
-            $table->enum('status', ['active', 'inactive'])->default('inactive');
-            $table->enum('gallery', ['uploaded', 'not uploaded'])->default('not uploaded'); // Updated default value
-            $table->string('title');
-            $table->text('description');
-            $table->string('image');
+            $table->unsignedBigInteger('tourist_place_id');
+            $table->text('tip');
+
+            $table->foreign('tourist_place_id')->references('id')->on('tourist_places')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -27,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('casestudies');
+        Schema::dropIfExists('tips');
     }
 };

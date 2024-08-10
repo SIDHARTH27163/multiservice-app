@@ -2,7 +2,9 @@
 use App\Http\Controllers\ITServiceController;
 use App\Http\Controllers\ITCaseStudiesController;
 use Illuminate\Support\Facades\Route;
-
+use Illuminate\Support\Facades\Storage;
+use App\Http\Controllers\ImageUploadController;
+use App\Http\Controllers\ResourceController;
 // Public routes
 Route::get('/', function () {
     return view('welcome');
@@ -15,7 +17,11 @@ Route::prefix('admin')->group(function () {
 
     // Resource routes for managing IT services
     Route::resource('manageitservices', ITServiceController::class)->except(['show']);
-
+    Route::prefix('manageitservices/{id}')->group(function () {
+        Route::get('gallery', [ITServiceController::class, 'gallery'])->name('manageitservices.gallery');
+        Route::post('gallery', [ITServiceController::class, 'addImageToGallery'])->name('manageitservices.addImageToGallery');
+        Route::delete('gallery/{imageId}', [ITServiceController::class, 'deleteImageFromGallery'])->name('manageitservices.deleteImageFromGallery');
+    });
     // Resource routes for managing case studies
     Route::resource('managecasestudies', ITCaseStudiesController::class)->except(['show']);
 
@@ -26,3 +32,9 @@ Route::prefix('admin')->group(function () {
         Route::delete('gallery/{imageId}', [ITCaseStudiesController::class, 'deleteImageFromGallery'])->name('managecasestudies.deleteImageFromGallery');
     });
 });
+// routes/for upload immages from text editor quill.js used
+// routes/for upload images from text editor quill.js used
+
+Route::post('/upload', [ImageUploadController::class, 'upload']);
+Route::get('resources/create', [ResourceController::class, 'create'])->name('resources.create');
+Route::post('resources/store', [ResourceController::class, 'store'])->name('resources.store');

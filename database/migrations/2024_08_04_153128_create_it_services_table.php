@@ -14,10 +14,10 @@ return new class extends Migration
         Schema::create('it_services', function (Blueprint $table) {
             $table->id();
             $table->enum('status', ['active', 'inactive'])->default('inactive');
+            $table->enum('gallery', ['uploaded', 'not uploaded'])->default('not uploaded'); // Updated default value
             $table->string('name');
             $table->text('description');
             $table->string('image');
-
             $table->timestamps();
         });
     }

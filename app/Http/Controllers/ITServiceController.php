@@ -1,7 +1,8 @@
 <?php
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Storage;
-
+use App\Models\Gallery;
+use App\Services\GalleryService;
 use App\Models\ITService;
 use Illuminate\Http\Request;
 /*
@@ -10,6 +11,13 @@ task: performing the crud operations fot admin side it services
 */
 class ITServiceController extends Controller
 {
+    protected $galleryService;
+
+    public function __construct(GalleryService $galleryService)
+    {
+        $this->galleryService = $galleryService;
+    }
+
     public function index()
     {
         $itServices = ITService::all();
@@ -41,24 +49,24 @@ class ITServiceController extends Controller
 
     }
 
-    public function edit($id)
-{
-    // Fetch the ITService record by ID
-    $itService = ITService::find($id);
+        public function edit($id)
+    {
+        // Fetch the ITService record by ID
+        $itService = ITService::find($id);
 
-    // Check if the record exists
-    if (!$itService) {
-        // Handle the case where the record is not found
-        return redirect()->route('itservices.index')->with('error', 'IT Service not found.');
+        // Check if the record exists
+        if (!$itService) {
+            // Handle the case where the record is not found
+            return redirect()->route('itservices.index')->with('error', 'IT Service not found.');
+        }
+
+        // Pass the ITService model to the view
+        return view('admin.manage-itservices', compact('itService'));
     }
 
-    // Pass the ITService model to the view
-    return view('admin.manage-itservices', compact('itService'));
-}
 
-
-public function update(Request $request, $id)
-{
+    public function update(Request $request, $id)
+    {
     // Retrieve the record by ID
     $itService = ITService::find($id);
 
@@ -95,7 +103,7 @@ public function update(Request $request, $id)
 
     // Redirect with a success message
     return redirect()->route('manageitservices.index')->with('success', 'IT Service updated successfully.');
-}
+   }
 
 
     public function destroy(Request $request, $id)
@@ -120,5 +128,40 @@ public function update(Request $request, $id)
         }
     }
 
+// manage gallery
+        public function gallery($id)
+        {
+            $itservice =  ITService::find($id);
+            if (!$itservice) {
+                return redirect()->route('managecasestudies.index')->with('error', 'Case study not found.');
+            }
 
+            $galleries = $this->galleryService->getGallery($itservice,  ITService::class);
+
+            return view('admin.itservicesgallery', compact('itservice', 'galleries'));
+        }
+
+        public function addImageToGallery(Request $request, $id)
+        {
+            $itservice =  ITService::find($id);
+            if (!$itservice) {
+                return redirect()->route('managecasestudies.index')->with('error', 'Case study not found.');
+            }
+
+            $this->galleryService->addImagesToGallery($request, $itservice,  ITService::class);
+
+            return redirect()->route('managecasestudies.index', $itservice->id)
+                            ->with('success', 'Gallery images added successfully.');
+        }
+
+        public function deleteImageFromGallery($id)
+        {
+            $deleted = $this->galleryService->deleteImageFromGallery($id);
+
+            if (!$deleted) {
+                return redirect()->back()->with('error', 'Image not found.');
+            }
+
+            return redirect()->back()->with('success', 'Image deleted successfully.');
+        }
 }
