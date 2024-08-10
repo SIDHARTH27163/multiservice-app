@@ -11,13 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('casestudies', function (Blueprint $table) {
+        Schema::create('statuses', function (Blueprint $table) {
             $table->id();
-            $table->enum('status', ['active', 'inactive'])->default('inactive');
-            $table->enum('gallery', ['uploaded', 'not uploaded'])->default('not uploaded'); // Updated default value
-            $table->string('title');
-            $table->text('description');
-            $table->string('image');
+            $table->string('status_name'); // E.g., 'active', 'inactive'
             $table->timestamps();
         });
     }
@@ -27,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('casestudies');
+        Schema::dropIfExists('statuses');
     }
 };

@@ -2,7 +2,9 @@
 use App\Http\Controllers\ITServiceController;
 use App\Http\Controllers\ITCaseStudiesController;
 use Illuminate\Support\Facades\Route;
-
+use Illuminate\Support\Facades\Storage;
+use App\Http\Controllers\ImageUploadController;
+use App\Http\Controllers\ResourceController;
 // Public routes
 Route::get('/', function () {
     return view('welcome');
@@ -30,3 +32,9 @@ Route::prefix('admin')->group(function () {
         Route::delete('gallery/{imageId}', [ITCaseStudiesController::class, 'deleteImageFromGallery'])->name('managecasestudies.deleteImageFromGallery');
     });
 });
+// routes/for upload immages from text editor quill.js used
+// routes/for upload images from text editor quill.js used
+
+Route::post('/upload', [ImageUploadController::class, 'upload']);
+Route::get('resources/create', [ResourceController::class, 'create'])->name('resources.create');
+Route::post('resources/store', [ResourceController::class, 'store'])->name('resources.store');

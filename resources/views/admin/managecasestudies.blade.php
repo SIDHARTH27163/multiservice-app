@@ -36,7 +36,7 @@
                     'value' => isset($casestudy) ? $casestudy->title : '',
                 ])
 
-                @include('components.textarea', [
+                @include('components.texteditor', [
                     'name' => 'description',
                     'placeholder' => 'Enter description',
                     'class' => 'border border-slate-950 font-Montserrat',
@@ -113,8 +113,8 @@
                                             <th scope="col" class="px-4 py-3">Title</th>
                                             <th scope="col" class="px-4 py-3">Description</th>
 
-                                            <th scope="col" class="px-4 py-3">Edit</th>
-                                            <th scope="col" class="px-4 py-3">Delete</th>
+                                            <th scope="col" class="px-4 py-3">Actions</th>
+
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -128,7 +128,7 @@
                                                 <td class="px-4 py-3">{{ $casestudy->title }}</td>
                                                 <td class="px-4 py-3">{{ $casestudy->description }}</td>
 
-                                                <td class="px-4 py-6 flex flex-row gap-2">
+                                                <td class="px-4 py-9 flex flex-row gap-2">
                                                     <a href="{{ route('managecasestudies.edit', $casestudy->id) }}"
                                                         class="text-blue-600 hover:underline"><svg
                                                             xmlns="http://www.w3.org/2000/svg" fill="none"
@@ -148,9 +148,6 @@
                                                         </svg>
 
                                                     </a>
-
-                                                </td>
-                                                <td class="px-4 py-3">
                                                     <form action="{{ route('managecasestudies.destroy', $casestudy->id) }}"
                                                         method="post"
                                                         onsubmit="return confirm('Are you sure you want to delete this case study?');">
@@ -165,6 +162,7 @@
                                                             </svg></button>
                                                     </form>
                                                 </td>
+
                                             </tr>
                                         @endforeach
                                     </tbody>

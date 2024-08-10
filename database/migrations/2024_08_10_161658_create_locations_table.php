@@ -11,22 +11,22 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('casestudies', function (Blueprint $table) {
+        Schema::create('locations', function (Blueprint $table) {
             $table->id();
             $table->enum('status', ['active', 'inactive'])->default('inactive');
-            $table->enum('gallery', ['uploaded', 'not uploaded'])->default('not uploaded'); // Updated default value
-            $table->string('title');
-            $table->text('description');
+            $table->string('name');
+            $table->text('address');
             $table->string('image');
             $table->timestamps();
         });
     }
+
 
     /**
      * Reverse the migrations.
      */
     public function down(): void
     {
-        Schema::dropIfExists('casestudies');
+        Schema::dropIfExists('locations');
     }
 };

@@ -17,6 +17,8 @@
     <!-- Scripts -->
 
     @vite('resources/js/app.js')
+    @vite('resources/js/editor.js')
+
 </head>
 
 <body class="leading-normal tracking-normal " style="font-family: 'Roboto Flex', sans-serif;">
