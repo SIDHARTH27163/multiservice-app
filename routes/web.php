@@ -41,4 +41,4 @@ Route::prefix('admin')->group(function () {
 // routes/for upload images from text editor quill.js used
 
 Route::post('/upload', [ImageUploadController::class, 'upload']);
-
+Route::view('/touristplaces', 'touristplaces.touristplaces');

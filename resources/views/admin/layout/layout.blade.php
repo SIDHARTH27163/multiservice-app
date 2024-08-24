@@ -129,11 +129,11 @@
                 <ul id="dropdown-example_it" class="hidden py-2 space-y-2">
 
                       <li>
-                         <a href="managelocation" class="flex items-center w-full p-2  transition duration-75 rounded-lg pl-11 group  text-white hover:bg-gray-900 font-roboto">Manage Locations</a>
+                         <a href="/admin/managelocations" class="flex items-center w-full p-2  transition duration-75 rounded-lg pl-11 group  text-white hover:bg-gray-900 font-roboto">Manage Locations</a>
                       </li>
 
                       <li>
-                         <a href="touristplaces" class="flex items-center w-full p-2  transition duration-75 rounded-lg pl-11 group  text-white hover:bg-gray-900 font-roboto">Manage Places</a>
+                         <a href="/admin/touristplaces" class="flex items-center w-full p-2  transition duration-75 rounded-lg pl-11 group  text-white hover:bg-gray-900 font-roboto">Manage Places</a>
                       </li>
 
 

@@ -16,9 +16,11 @@ class TouristPlaceController extends Controller
 {
     public function index()
     {
-        // Retrieve all tourist places
-        $touristPlaces = TouristPlace::with('location')->get(); // Eager load location
+        // Retrieve all tourist places with related data
+        $touristPlaces = TouristPlace::with(['location', 'activities', 'accommodations', 'tips', 'transportations', 'timeToVisits'])->get(); // Eager load all relationships
+
         $locations = Location::all(); // Fetch all locations for the dropdown
+
         return view('admin.manageplaces', compact('touristPlaces', 'locations'));
     }
 
