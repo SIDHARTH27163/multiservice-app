@@ -20,26 +20,23 @@ class TouristPlaceController extends Controller
         // Define the column you want to order by
         $orderByColumn = 'id'; // Replace with your column name
 
-        // Build the query with eager loading and ordering
+        // Get the search query from the request
+        $search = $request->input('search');
+
+        // Build the query with eager loading, ordering, and search filter
         $query = TouristPlace::with(['location', 'activities', 'accommodations', 'tips', 'transportations', 'timeToVisits'])
             ->orderBy($orderByColumn, 'desc'); // Ordering by descending
+
 
         // Paginate the results
         $touristPlaces = $query->simplePaginate(20);
 
-        if ($request->ajax()) {
-            return response()->json([
-                'table' => view('partials.tourist-places-table', compact('touristPlaces'))->render(),
-                'currentPage' => $touristPlaces->currentPage(),
-                'totalPages' => $touristPlaces->lastPage()
-            ]);
-        }
-
         $categories = Category::where('table_name', 'tourist_places')->get();
         $locations = Location::where('status', 'active')->get(); // Fetch all locations for the dropdown
 
-        return view('admin.manageplaces', compact('touristPlaces', 'locations', 'categories'));
+        return view('admin.manageplaces', compact('touristPlaces', 'locations', 'categories', 'search'));
     }
+
 
     public function create()
     {
