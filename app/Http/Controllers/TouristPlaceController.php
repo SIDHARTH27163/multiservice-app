@@ -10,18 +10,35 @@ use App\Models\Tip;
 use App\Models\Transportation;
 use App\Models\PlacesGallery;
 use App\Models\Location; // Assuming Location is a model
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class TouristPlaceController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        // Retrieve all tourist places with related data
-        $touristPlaces = TouristPlace::with(['location', 'activities', 'accommodations', 'tips', 'transportations', 'timeToVisits'])->get(); // Eager load all relationships
+        // Define the column you want to order by
+        $orderByColumn = 'id'; // Replace with your column name
 
-        $locations = Location::all(); // Fetch all locations for the dropdown
+        // Build the query with eager loading and ordering
+        $query = TouristPlace::with(['location', 'activities', 'accommodations', 'tips', 'transportations', 'timeToVisits'])
+            ->orderBy($orderByColumn, 'desc'); // Ordering by descending
 
-        return view('admin.manageplaces', compact('touristPlaces', 'locations'));
+        // Paginate the results
+        $touristPlaces = $query->simplePaginate(20);
+
+        if ($request->ajax()) {
+            return response()->json([
+                'table' => view('partials.tourist-places-table', compact('touristPlaces'))->render(),
+                'currentPage' => $touristPlaces->currentPage(),
+                'totalPages' => $touristPlaces->lastPage()
+            ]);
+        }
+
+        $categories = Category::where('table_name', 'tourist_places')->get();
+        $locations = Location::where('status', 'active')->get(); // Fetch all locations for the dropdown
+
+        return view('admin.manageplaces', compact('touristPlaces', 'locations', 'categories'));
     }
 
     public function create()
@@ -36,6 +53,7 @@ class TouristPlaceController extends Controller
         $request->validate([
             'location_id' => 'required|exists:locations,id',
             'title' => 'required|string|max:255',
+            'category' => 'required',
             'about' => 'required|string',
             'time_to_visit' => 'required|string',
             'activity' => 'required|string',
@@ -53,6 +71,7 @@ class TouristPlaceController extends Controller
                 'location_id' => $request->input('location_id'),
                 'title' => $request->input('title'),
                 'about' => $request->input('about'),
+                'category' => $request->input('category'),
             ]);
 
             // Handle related models (TimeToVisit, Activity, etc.)
@@ -194,6 +213,30 @@ class TouristPlaceController extends Controller
 
         // Redirect to the appropriate route with a success message
         return redirect()->route('touristplaces.index')->with('success', 'Tourist Place and related resources deleted successfully');
+    }
+    public function search(Request $request)
+    {
+        // Get the search query from the request
+        $search = $request->input('search');
+
+        // Build the query with eager loading and ordering
+        $query = TouristPlace::with(['location', 'activities', 'accommodations', 'tips', 'transportations', 'timeToVisits'])
+            ->orderBy('created_at', 'desc'); // Order by descending
+
+        // Apply search filter
+        if ($search) {
+            $query->where('title', 'like', "%{$search}%")
+                  ->orWhere('about', 'like', "%{$search}%")
+                  ->orWhere('category', 'like', "%{$search}%"); // You can add more fields to search
+        }
+
+        // Paginate the results
+        $touristPlaces = $query->simplePaginate(20);
+
+        $categories = Category::where('table_name', 'tourist_places')->get();
+        $locations = Location::where('status', 'active')->get(); // Fetch all locations for the dropdown
+
+        return view('admin.manageplaces', compact('touristPlaces', 'locations', 'categories'));
     }
 
 }

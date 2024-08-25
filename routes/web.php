@@ -22,7 +22,10 @@ Route::prefix('admin')->group(function () {
     Route::post('/categories/{id}/toggle-status', [CategoryController::class, 'changeStatus'])->name('categories.toggle-status');
 
     Route::resource('touristplaces', TouristPlaceController::class)->except(['show']);
+    Route::get('/tourist-places/search', [TouristPlaceController::class, 'search'])->name('touristplaces.search');
+
     Route::resource('managelocations', LocationController::class)->except(['show']);
+    Route::post('/managelocations/{id}/toggle-status', [LocationController::class, 'changeStatus'])->name('managelocations.toggle-status');
 
     // Resource routes for managing IT services
     Route::resource('manageitservices', ITServiceController::class)->except(['show']);

@@ -30,7 +30,15 @@
                 'label' => 'Location'
             ])
 
-
+            @include('components.selectbox', [
+                'id' => "category",
+                'name' => "category",
+                'options' => $categories->pluck('name','name'),
+                'selected' => old('location_id'),
+                'placeholder' => 'Select Category',
+                'error' => $errors->first('category'),
+                'label' => 'Category'
+            ])
 
              {{-- title  --}}
              @include('components.input', [
@@ -160,7 +168,7 @@
                     <div class="bg-white dark:bg-gray-800 relative shadow-md rounded-lg overflow-hidden">
                         <div class="flex flex-col md:flex-row items-center justify-between space-y-3 md:space-y-0 md:space-x-4 p-4">
                             <div class="w-full md:w-1/2">
-                                <form class="flex items-center">
+                                <form id="search-form" action="{{ route('touristplaces.search') }}" method="GET" class="flex items-center">
                                     <label for="simple-search" class="sr-only">Search</label>
                                     <div class="relative w-full">
                                         <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
@@ -172,35 +180,32 @@
                                                     clip-rule="evenodd" />
                                             </svg>
                                         </div>
-                                        <input type="text" id="simple-search"
+                                        <input type="text" id="simple-search" name="search"
                                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full pl-10 p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                                            placeholder="Search" required="">
+                                            placeholder="Search" oninput="this.form.submit()">
                                     </div>
                                 </form>
+
+
+                                </form>
                             </div>
-                            <div class="w-full md:w-auto flex flex-col md:flex-row space-y-2 md:space-y-0 items-stretch md:items-center justify-end md:space-x-3 flex-shrink-0">
-                                <button type="button"
-                                    class="flex items-center justify-center text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800">
-                                    <svg class="h-3.5 w-3.5 mr-2" fill="currentColor" viewBox="0 0 20 20"
-                                        xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                                        <path clip-rule="evenodd" fill-rule="evenodd"
-                                            d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" />
-                                    </svg>
-                                    Add location
-                                </button>
+
+                            <div class="w-full md:w-auto flex flex-col gap-3 md:flex-row space-y-2 md:space-y-0 items-stretch md:items-center justify-end md:space-x-3 flex-shrink-0">
+
                                 <!-- Additional Buttons and Dropdowns -->
+                                {!!$touristPlaces->links()!!}
+                                <!-- Pagination Controls -->
                             </div>
                         </div>
                         <div class="overflow-x-auto">
-                            <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                            <table id="tourist-places-table" class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                                 <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                                     <tr>
 
                                         <th scope="col" class="px-4 py-3">Title</th>
+                                        <th scope="col" class="px-4 py-3">Category</th>
                                         <th scope="col" class="px-4 py-3">About</th>
-                                        <th scope="col" class="px-4 py-3">Address</th>
-                                        <th scope="col" class="px-4 py-3">Activities</th>
-                                        <th scope="col" class="px-4 py-3">Accomodations</th>
+
                                         <th scope="col" class="px-4 py-3">
                                             <span>Actions</span>
                                         </th>
@@ -209,21 +214,15 @@
                                 <tbody>
 
                                     <tbody>
+
                                         @foreach ($touristPlaces as $place)
                                             <tr class="border-b dark:border-gray-700 font-Robotomedium">
                                                 <td class="px-4 py-3">{{ $place->title }}</td>
+                                                <td class="px-4 py-3">{{ $place->category }}</td>
                                                 <td class="px-4 py-3">{!! $place->about !!}</td>
-                                                <td class="px-4 py-3">{{ $place->location->address }}</td> <!-- Display location address -->
-                                                <td class="px-4 py-3">
-                                                    @foreach ($place->activities as $activity)
-                                                        {!! $activity->activity !!} <!-- Display each activity -->
-                                                    @endforeach
-                                                </td>
-                                                <td class="px-4 py-3">
-                                                    @foreach ($place->accommodations as $accommodation)
-                                                        {!! $accommodation->accommodation !!} <!-- Display each accommodation -->
-                                                    @endforeach
-                                                </td>
+                                                <!-- Display location address -->
+
+
                                                 <td class="py-10 flex items-center">
                                                     <div class="flex items-center p-1">
                                                         <a href="{{ route('touristplaces.edit', $place->id) }}" class="text-yellow-600 hover:underline">
@@ -246,14 +245,19 @@
                                                 </td>
                                             </tr>
                                         @endforeach
-                                    </tbody>
 
+                                    </tbody>
+                                </table>
+                                {{-- <div class="rounded-lg shadow-sm bg-white p-4 my-3">
+
+
+                                        {!!$touristPlaces->links()!!}
+                                    <!-- Pagination Controls -->
+
+                                </div> --}}
 
                         </div>
-                        <nav class="flex flex-col md:flex-row justify-between items-start md:items-center space-y-3 md:space-y-0 p-4"
-                            aria-label="Table navigation">
-                            <!-- Pagination -->
-                        </nav>
+
                     </div>
                 </div>
             </div>
