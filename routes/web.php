@@ -4,9 +4,10 @@ use App\Http\Controllers\ITCaseStudiesController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Controllers\ImageUploadController;
-
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\TouristPlaceController;
 use App\Http\Controllers\LocationController;
+
 // Public routes
 Route::get('/', function () {
     return view('welcome');
@@ -16,6 +17,10 @@ Route::get('/', function () {
 Route::prefix('admin')->group(function () {
     // Admin dashboard route
     Route::view('/', 'admin.admin')->name('admin.dashboard');
+    // Route::view('manage-categories', 'admin.categories');
+    Route::resource('manage-categories', CategoryController::class);
+    Route::post('/categories/{id}/toggle-status', [CategoryController::class, 'changeStatus'])->name('categories.toggle-status');
+
     Route::resource('touristplaces', TouristPlaceController::class)->except(['show']);
     Route::resource('managelocations', LocationController::class)->except(['show']);
 
@@ -42,3 +47,4 @@ Route::prefix('admin')->group(function () {
 
 Route::post('/upload', [ImageUploadController::class, 'upload']);
 Route::view('/touristplaces', 'touristplaces.touristplaces');
+Route::view('/popularplaces', 'touristplaces.popularplaces');

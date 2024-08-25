@@ -1,6 +1,6 @@
 @vite('resources/css/styles.css')
 @vite('resources/js/style.js')
-<section class=" px-3 max-w-7xl mx-auto">
+<section class=" px-5 container mx-auto">
 
     <div id="cCarousel" class="relative mx-auto px-1">
         <div class="flex items-center justify-center ">

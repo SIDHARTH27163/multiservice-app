@@ -22,17 +22,17 @@ document.addEventListener("scroll", function () {
 
     //Use to switch toggleColour colours
     for (var i = 0; i < toToggle.length; i++) {
-      toToggle[i].classList.add("text-slate-950");
-      toToggle[i].classList.remove("text-black");
+      toToggle[i].classList.add("text-amber-700");
+      toToggle[i].classList.remove("text-rose-600");
     //   toToggle1[i].classList.add("text-slate-900");
-    //   toToggle1[i].classList.remove("text-black");
-      toToggle2[i].classList.add("text-slate-950");
-      toToggle2[i].classList.remove("text-black");
-      toToggle3[i].classList.add("text-slate-950");
-      toToggle3[i].classList.remove("text-black");
-      toToggle4[i].classList.add("text-slate-950");
-      toToggle4[i].classList.remove("text-black");
-    //   toToggle6[i].classList.remove("text-black");
+    //   toToggle1[i].classList.remove("text-rose-600");
+      toToggle2[i].classList.add("text-amber-700");
+      toToggle2[i].classList.remove("text-rose-600");
+      toToggle3[i].classList.add("text-amber-700");
+      toToggle3[i].classList.remove("text-rose-600");
+      toToggle4[i].classList.add("text-amber-700");
+      toToggle4[i].classList.remove("text-rose-600");
+    //   toToggle6[i].classList.remove("text-rose-600");
     }
      header.classList.add("shadow");
      header.classList.add("bg-white");
@@ -44,18 +44,18 @@ document.addEventListener("scroll", function () {
     // header.classList.add("transparent");
     //Use to switch toggleColour colours
     for (var i = 0; i < toToggle.length; i++) {
-      toToggle[i].classList.add("text-black");
-      toToggle[i].classList.remove("text-slate-950");
-    //   toToggle1[i].classList.add("text-black");
+      toToggle[i].classList.add("text-rose-600");
+      toToggle[i].classList.remove("text-amber-700");
+    //   toToggle1[i].classList.add("text-rose-600");
     //   toToggle1[i].classList.remove("text-slate-900");
-      toToggle2[i].classList.add("text-black");
-      toToggle2[i].classList.remove("text-slate-950");
-      toToggle3[i].classList.add("text-black");
-      toToggle3[i].classList.remove("text-slate-950");
-      toToggle4[i].classList.add("text-black");
-      toToggle4[i].classList.remove("text-slate-950");
-    //   toToggle6[i].classList.add("text-black");
-    //   toToggle6[i].classList.remove("text-slate-950");
+      toToggle2[i].classList.add("text-rose-600");
+      toToggle2[i].classList.remove("text-amber-700");
+      toToggle3[i].classList.add("text-rose-600");
+      toToggle3[i].classList.remove("text-amber-700");
+      toToggle4[i].classList.add("text-rose-600");
+      toToggle4[i].classList.remove("text-amber-700");
+    //   toToggle6[i].classList.add("text-rose-600");
+    //   toToggle6[i].classList.remove("text-amber-700");
     }
 
     // header.classList.remove("shadow");

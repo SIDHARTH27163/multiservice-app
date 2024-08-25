@@ -39,7 +39,6 @@
 
 <body class="">
     @include('components/touristplaceheader')
-
     <section class="relative">
         <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/a47eb282648c5de256e86ce202d2a8e22acee0c9e1e1ffdfff297c2360ee5baf?placeholderIfAbsent=true&apiKey=c81a87a8b87043acac16b0e47d857063" class="object-contain w-full aspect-[3.41]" alt="Decorative image" />
         <h1 class="absolute  inset-0 flex items-center justify-center text-white lg:text-7xl md:text-5xl text-4xl text-center font-semibold font-Robotomedium whitespace-normal tracking-tight leading-10">
@@ -74,57 +73,42 @@
         <div class="flex-grow max-w-6xl">
 
             <div class=" flex flex-col items-center justify-center lg:p-6 md:p-5 sm:p-2 p-1">
-                <div class="flex flex-col font-medium text-black max-w-5xl">
-                    @include('components.default-card', [
-                            'date'=>'September 17, 2021 - Tips & Tricks',
-                            'title'=>"A traveler's guide to Penang, Malaysia - Where to Eat, Drink, Sleep and Explore",
-                            'comment'=>'Comments',
-                            'location'=>'Dharamshala',
-                            'description'=>'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Viverra pharetra ac erat commodo non leo eget gravida viverra. Pharetra pharetra.'
-                         ])
-                  </div>
+
                   {{-- top cards --}}
                   <section class="py-5">
-                    <div class="grid lg:grid-cols-3 md:grid-cols-3 sm:grid-cols-2 grid-cols-2  gap-3 py-5">
+                    <section class="flex flex-wrap gap-10 text-2xl font-bold text-black">
+                        <div class="flex flex-wrap flex-auto max-md:max-w-full items-center justify-center gap-x-4 font-Robotoregular">
+                          <button class="px-9 py-5 bg-white border-2 border-solid border-stone-300 ">
+                            South America
+                          </button>
+                          <button class="px-9 py-5 bg-white border-2 border-solid border-stone-300 ">
+                            South America
+                          </button>
+                          <button class="px-9 py-5 bg-white border-2 border-solid border-stone-300 ">
+                            South America
+                          </button>
+                          <button class="px-9 py-5 bg-white border-2 border-solid border-stone-300 ">
+                            South America
+                          </button>
 
-                        @include('components.default-card', [
-                            'date'=>'September 17, 2021 - Tips & Tricks',
-                            'title'=>'Have you read The Beach by Alex?',
-                            'comment'=>'Comments',
-                            'location'=>'Dharamshala'
-                         ])
-                           @include('components.default-card', [
-                            'date'=>'September 17, 2021 - Tips & Tricks',
-                            'title'=>'Have you read The Beach by Alex?',
-                            'comment'=>'Comments',
-                            'location'=>'Dharamshala'
-                         ])
-                           @include('components.default-card', [
-                            'date'=>'September 17, 2021 - Tips & Tricks',
-                            'title'=>'Have you read The Beach by Alex?',
-                            'comment'=>'Comments',
-                            'location'=>'Dharamshala'
-                         ])
+                        </div>
 
+                      </section>
+                    <div class="grid lg:grid-cols-3 md:grid-cols-3 sm:grid-cols-2 grid-cols-2  gap-5 py-5">
 
-                    </div>
-                  </section>
-                   {{-- cards --}}
-                  <div class="flex flex-col font-medium text-black max-w-5xl">
-                    @include('components.default-card', [
-                            'date'=>'September 17, 2021 - Tips & Tricks',
-                            'title'=>"A traveler's guide to Penang, Malaysia - Where to Eat, Drink, Sleep and Explore",
-                            'comment'=>'Comments',
-                            'location'=>'Dharamshala',
-                            'description'=>'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Viverra pharetra ac erat commodo non leo eget gravida viverra. Pharetra pharetra.'
-                         ])
-
-                  </div>
-
- {{-- bottom cards --}}
- <section class="py-5">
-    <div class="grid lg:grid-cols-3 md:grid-cols-3 sm:grid-cols-2 grid-cols-2  gap-3 py-5">
-        @include('components.cropped-card', [
+                        @include('components.cropped-card', [
+           'date'=>'September 17, 2021 - Tips & Tricks',
+           'title'=>'Have you read The Beach by Alex?',
+           'comment'=>'Comments',
+           'location'=>'Dharamshala'
+        ])
+                           @include('components.cropped-card', [
+           'date'=>'September 17, 2021 - Tips & Tricks',
+           'title'=>'Have you read The Beach by Alex?',
+           'comment'=>'Comments',
+           'location'=>'Dharamshala'
+        ])
+                           @include('components.cropped-card', [
            'date'=>'September 17, 2021 - Tips & Tricks',
            'title'=>'Have you read The Beach by Alex?',
            'comment'=>'Comments',
@@ -136,25 +120,32 @@
             'comment'=>'Comments',
             'location'=>'Dharamshala'
          ])
- @include('components.cropped-card', [
-    'date'=>'September 17, 2021 - Tips & Tricks',
-    'title'=>'Have you read The Beach by Alex?',
-    'comment'=>'Comments',
-    'location'=>'Dharamshala'
- ])
-  @include('components.cropped-card', [
-    'date'=>'September 17, 2021 - Tips & Tricks',
-    'title'=>'Have you read The Beach by Alex?',
-    'comment'=>'Comments',
-    'location'=>'Dharamshala'
- ])
+          @include('components.cropped-card', [
+            'date'=>'September 17, 2021 - Tips & Tricks',
+            'title'=>'Have you read The Beach by Alex?',
+            'comment'=>'Comments',
+            'location'=>'Dharamshala'
+         ])
+          @include('components.cropped-card', [
+            'date'=>'September 17, 2021 - Tips & Tricks',
+            'title'=>'Have you read The Beach by Alex?',
+            'comment'=>'Comments',
+            'location'=>'Dharamshala'
+         ])
+          @include('components.cropped-card', [
+            'date'=>'September 17, 2021 - Tips & Tricks',
+            'title'=>'Have you read The Beach by Alex?',
+            'comment'=>'Comments',
+            'location'=>'Dharamshala'
+         ])
+
+
+                    </div>
+                  </section>
 
 
 
 
-
-    </div>
-  </section>
 
 
             </div>
@@ -163,7 +154,6 @@
 {{--  --}}
 {{-- footer --}}
 @include('components/touristfooter')
-
 {{-- footer --}}
 
 {{--  --}}
@@ -171,6 +161,6 @@
 
 
 
-<
+
 
 </html>

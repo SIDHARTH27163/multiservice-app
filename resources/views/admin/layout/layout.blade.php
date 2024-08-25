@@ -56,6 +56,14 @@
                 </a>
              </li>
              <li>
+                <a href="/admin/manage-categories" class="flex items-center p-2  rounded-lg text-white hover:bg-slate-900 ">
+                    <svg class="flex-shrink-0 w-5 h-5  transition duration-75 text-blue-400 group-hover: group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16.872 9.687 20 6.56 17.44 4 4 17.44 6.56 20 16.873 9.687Zm0 0-2.56-2.56M6 7v2m0 0v2m0-2H4m2 0h2m7 7v2m0 0v2m0-2h-2m2 0h2M8 4h.01v.01H8V4Zm2 2h.01v.01H10V6Zm2-2h.01v.01H12V4Zm8 8h.01v.01H20V12Zm-2 2h.01v.01H18V14Zm2 2h.01v.01H20V16Z"></path>
+                      </svg>
+                   <span class="flex-1 ml-3 whitespace-nowrap">Manage Categories</span>
+                </a>
+             </li>
+             <li>
                 <button type="button" class="flex items-center w-full p-2  transition duration-75 rounded-lg group  text-white hover:bg-gray-900" aria-controls="dropdown-example_state" data-collapse-toggle="dropdown-example_its">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-sky-300">
       <path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" />

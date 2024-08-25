@@ -41,7 +41,7 @@
 
 
     @include('components/navbar')
-    <section class="justify-center max-w-full mx-auto">
+    <section class="justify-center container mx-auto">
         <div class="flex gap-5 max-md:flex-col max-md:gap-0">
             <div class="flex flex-col w-6/12 max-md:ml-0 max-md:w-full">
                 <div class="flex flex-col self-stretch px-5 my-auto max-md:mt-10 max-md:max-w-full">
@@ -177,74 +177,28 @@
 
 </section>
 {{-- grid cards --}}
-<section class="py-5 max-w-7xl mx-auto px-5">
+<section class="py-5 max-w-7xl mx-auto">
     <div class="grid lg:grid-cols-3 md:grid-cols-3 sm:grid-cols-2 grid-cols-2  gap-3 py-5">
-      <article class="flex flex-col  ">
-        <div class="flex flex-col pb-4 mx-auto w-full text-lg font-medium text-black bg-white shadow-lg rounded-sm max-md:mt-6">
-          <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/9e1bbda09443de87145b742ebf3a324b71318c83bb8344578d35fbcf2f9b421b?placeholderIfAbsent=true&apiKey=c81a87a8b87043acac16b0e47d857063" alt="Blog post thumbnail image" class="object-contain w-full aspect-[1.41]" />
-          <header class="flex gap-2.5 items-start self-start mt-4 leading-loose">
-            <div class="flex shrink-0 mt-1.5 h-6 bg-amber-500 w-[3px]" aria-hidden="true"></div>
-            <time datetime="2021-09-17">September 17, 2021 - Tips & Tricks</time>
-          </header>
-          <h2 class="mt-3 mr-3.5 ml-3 text-3xl font-bold leading-10 max-md:mx-2.5 max-md:mt-10">
-            Have you read The Beach by Alex?
-          </h2>
-          <footer class="flex gap-5 justify-between self-center mt-3 max-w-full w-[343px] max-md:mt-10 px-3">
-            <div class="flex gap-3.5 mt-2 items-start leading-10 whitespace-nowrap">
-              <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/4c90f2f880b8e3a4bbcd4a7a9fea6d73c4951645c2672b00eb00ccd76f42d2c2?placeholderIfAbsent=true&apiKey=c81a87a8b87043acac16b0e47d857063" alt="" class="object-contain shrink-0 mt-3 aspect-[0.73] w-[19px]" />
-              <p class="basis-auto mt-1">Georgia</p>
-            </div>
-            <div class="flex gap-3.5 self-start mt-4">
-              <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/32a8dd303b012a2055d2d44c469f6dd13d6fbe666a4ff0b7e222c616505d11bd?placeholderIfAbsent=true&apiKey=c81a87a8b87043acac16b0e47d857063" alt="" class="object-contain shrink-0 my-auto aspect-[1.44] w-[23px]" />
-              <p class="basis-auto">Comment (52)</p>
-            </div>
-          </footer>
-        </div>
-      </article>
-      <article class="flex flex-col  ">
-        <div class="flex flex-col pb-4 mx-auto w-full text-lg font-medium text-black bg-white shadow-lg rounded-sm max-md:mt-6">
-          <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/9e1bbda09443de87145b742ebf3a324b71318c83bb8344578d35fbcf2f9b421b?placeholderIfAbsent=true&apiKey=c81a87a8b87043acac16b0e47d857063" alt="Blog post thumbnail image" class="object-contain w-full aspect-[1.41]" />
-          <header class="flex gap-2.5 items-start self-start mt-4 leading-loose">
-            <div class="flex shrink-0 mt-1.5 h-6 bg-amber-500 w-[3px]" aria-hidden="true"></div>
-            <time datetime="2021-09-17">September 17, 2021 - Tips & Tricks</time>
-          </header>
-          <h2 class="mt-3 mr-3.5 ml-3 text-3xl font-bold leading-10 max-md:mx-2.5 max-md:mt-10">
-            Have you read The Beach by Alex?
-          </h2>
-          <footer class="flex gap-5 justify-between self-center mt-3 max-w-full w-[343px] max-md:mt-10 px-3">
-            <div class="flex gap-3.5 mt-2 items-start leading-10 whitespace-nowrap">
-              <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/4c90f2f880b8e3a4bbcd4a7a9fea6d73c4951645c2672b00eb00ccd76f42d2c2?placeholderIfAbsent=true&apiKey=c81a87a8b87043acac16b0e47d857063" alt="" class="object-contain shrink-0 mt-3 aspect-[0.73] w-[19px]" />
-              <p class="basis-auto mt-1">Georgia</p>
-            </div>
-            <div class="flex gap-3.5 self-start mt-4">
-              <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/32a8dd303b012a2055d2d44c469f6dd13d6fbe666a4ff0b7e222c616505d11bd?placeholderIfAbsent=true&apiKey=c81a87a8b87043acac16b0e47d857063" alt="" class="object-contain shrink-0 my-auto aspect-[1.44] w-[23px]" />
-              <p class="basis-auto">Comment (52)</p>
-            </div>
-          </footer>
-        </div>
-      </article>
-      <article class="flex flex-col  ">
-        <div class="flex flex-col pb-4 mx-auto w-full text-lg font-medium text-black bg-white shadow-lg rounded-sm max-md:mt-6">
-          <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/9e1bbda09443de87145b742ebf3a324b71318c83bb8344578d35fbcf2f9b421b?placeholderIfAbsent=true&apiKey=c81a87a8b87043acac16b0e47d857063" alt="Blog post thumbnail image" class="object-contain w-full aspect-[1.41]" />
-          <header class="flex gap-2.5 items-start self-start mt-4 leading-loose">
-            <div class="flex shrink-0 mt-1.5 h-6 bg-amber-500 w-[3px]" aria-hidden="true"></div>
-            <time datetime="2021-09-17">September 17, 2021 - Tips & Tricks</time>
-          </header>
-          <h2 class="mt-3 mr-3.5 ml-3 text-3xl font-bold leading-10 max-md:mx-2.5 max-md:mt-10">
-            Have you read The Beach by Alex?
-          </h2>
-          <footer class="flex gap-5 justify-between self-center mt-3 max-w-full w-[343px] max-md:mt-10 px-3">
-            <div class="flex gap-3.5 mt-2 items-start leading-10 whitespace-nowrap">
-              <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/4c90f2f880b8e3a4bbcd4a7a9fea6d73c4951645c2672b00eb00ccd76f42d2c2?placeholderIfAbsent=true&apiKey=c81a87a8b87043acac16b0e47d857063" alt="" class="object-contain shrink-0 mt-3 aspect-[0.73] w-[19px]" />
-              <p class="basis-auto mt-1">Georgia</p>
-            </div>
-            <div class="flex gap-3.5 self-start mt-4">
-              <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/32a8dd303b012a2055d2d44c469f6dd13d6fbe666a4ff0b7e222c616505d11bd?placeholderIfAbsent=true&apiKey=c81a87a8b87043acac16b0e47d857063" alt="" class="object-contain shrink-0 my-auto aspect-[1.44] w-[23px]" />
-              <p class="basis-auto">Comment (52)</p>
-            </div>
-          </footer>
-        </div>
-      </article>
+
+        @include('components.default-card', [
+            'date'=>'September 17, 2021 - Tips & Tricks',
+            'title'=>'Have you read The Beach by Alex?',
+            'comment'=>'Comments',
+            'location'=>'Dharamshala'
+         ])
+           @include('components.default-card', [
+            'date'=>'September 17, 2021 - Tips & Tricks',
+            'title'=>'Have you read The Beach by Alex?',
+            'comment'=>'Comments',
+            'location'=>'Dharamshala'
+         ])
+           @include('components.default-card', [
+            'date'=>'September 17, 2021 - Tips & Tricks',
+            'title'=>'Have you read The Beach by Alex?',
+            'comment'=>'Comments',
+            'location'=>'Dharamshala'
+         ])
+
 
     </div>
   </section>
