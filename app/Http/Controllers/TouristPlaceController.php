@@ -235,5 +235,38 @@ class TouristPlaceController extends Controller
 
         return view('admin.manageplaces', compact('touristPlaces', 'locations', 'categories'));
     }
+// methods for home user
+public function home(Request $request)
+{
+    // Define the column you want to order by
+    $orderByColumn = 'created_at'; // Replace with your column name
+
+    // Get the search query from the request
+    $search = $request->input('search');
+
+    // Build the query with eager loading, ordering, and search filter
+    $query = TouristPlace::with(['location', 'activities', 'accommodations', 'tips', 'transportations', 'timeToVisits'])
+        ->where('status', 'active') // Filter by status
+        ->when($search, function ($query, $search) {
+            // Apply search filter if provided
+            return $query->where('name', 'like', "%{$search}%"); // Adjust the column to search as needed
+        })
+        ->orderBy($orderByColumn, 'desc'); // Ordering by descending
+
+    // Limit the results to a higher number to handle slicing in the view
+    $touristPlaces = $query->take(30)->get();
+
+    // Slice the results into the desired segments
+    $firstItem = $touristPlaces->slice(0, 1);
+    $firstSet = $touristPlaces->slice(1, 6);
+    $staticItem = $touristPlaces->slice(7, 1);
+    $secondSet = $touristPlaces->slice(8, 6);
+
+    // Fetch categories and locations
+    $categories = Category::where('table_name', 'tourist_places')->get();
+    $locations = Location::where('status', 'active')->get(); // Fetch all active locations for the dropdown
+
+    return view('touristplaces.touristplaces', compact('firstItem', 'firstSet', 'staticItem', 'secondSet', 'locations', 'categories', 'search'));
+}
 
 }

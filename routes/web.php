@@ -8,6 +8,8 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\TouristPlaceController;
 use App\Http\Controllers\LocationController;
 
+// use App\Http\Middleware\LogRequestMiddleware;
+// Route::middleware(LogRequestMiddleware::class)->group(function () {
 // Public routes
 Route::get('/', function () {
     return view('welcome');
@@ -49,5 +51,9 @@ Route::prefix('admin')->group(function () {
 // routes/for upload images from text editor quill.js used
 
 Route::post('/upload', [ImageUploadController::class, 'upload']);
-Route::view('/touristplaces', 'touristplaces.touristplaces');
-Route::view('/popularplaces', 'touristplaces.popularplaces');
+
+// });
+Route::prefix('touristplaces')->group(function () {
+    Route::get('/', [TouristPlaceController::class, 'home'])->name('touristplaces.home');
+    // Route::get('popularplaces', [TouristPlaceController::class, 'popularPlaces'])->name('touristplaces.popularplaces');
+});

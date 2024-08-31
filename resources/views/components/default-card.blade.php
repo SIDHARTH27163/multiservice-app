@@ -10,7 +10,7 @@
                 {{$title}}
               </h2>
               @if(!empty($description))
-        <p class="mt-5 whitespace-normal tracking-wide mx-4 text-xl leading-10 max-md:mt-10 max-md:max-w-full font-Robotoregular">
+        <p class="mt-5 whitespace-normal tracking-wide mx-4 text-lg text-justify leading-8 max-md:mt-10 max-md:max-w-full font-Robotoregular">
             {{ $description }}
         </p>
     @endif
