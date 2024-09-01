@@ -30,7 +30,7 @@
                 <!-- Start Article Items -->
                 <article class="flex flex-col ml-5  w-96 max-md:ml-0 max-md:w-full cCarousel-item">
                     <div class="flex flex-col grow justify-center  max-md:mt-10">
-                        <div class="flex flex-col px-7 py-14 rounded-lg shadow-lg bg-neutral-50 max-md:px-5">
+                        <div class="flex flex-col px-7 py-14 rounded-lg drop-shadow-lg bg-white max-md:px-5">
                             <img loading="lazy"
                                 src="https://cdn.builder.io/api/v1/image/assets/TEMP/7e9cac6ed32187b11c4ceaea002eeee1c73b3affe40fda4ced9cea36d64091b0?apiKey=c81a87a8b87043acac16b0e47d857063&"
                                 class="aspect-square w-[58px]" alt="Web Design & Development Icon" />
@@ -45,7 +45,7 @@
                 </article>
                 <article class="flex flex-col ml-5  w-96 max-md:ml-0 max-md:w-full cCarousel-item">
                     <div class="flex flex-col grow justify-center  max-md:mt-10">
-                        <div class="flex flex-col px-7 py-14 rounded-lg shadow-lg bg-neutral-50 max-md:px-5">
+                        <div class="flex flex-col px-7 py-14 rounded-lg drop-shadow-lg bg-white max-md:px-5">
                             <img loading="lazy"
                                 src="https://cdn.builder.io/api/v1/image/assets/TEMP/7e9cac6ed32187b11c4ceaea002eeee1c73b3affe40fda4ced9cea36d64091b0?apiKey=c81a87a8b87043acac16b0e47d857063&"
                                 class="aspect-square w-[58px]" alt="Web Design & Development Icon" />
@@ -60,7 +60,7 @@
                 </article>
                 <article class="flex flex-col ml-5  w-96 max-md:ml-0 max-md:w-full cCarousel-item">
                     <div class="flex flex-col grow justify-center  max-md:mt-10">
-                        <div class="flex flex-col px-7 py-14 rounded-lg shadow-lg bg-neutral-50 max-md:px-5">
+                        <div class="flex flex-col px-7 py-14 rounded-lg drop-shadow-lg bg-white max-md:px-5">
                             <img loading="lazy"
                                 src="https://cdn.builder.io/api/v1/image/assets/TEMP/7e9cac6ed32187b11c4ceaea002eeee1c73b3affe40fda4ced9cea36d64091b0?apiKey=c81a87a8b87043acac16b0e47d857063&"
                                 class="aspect-square w-[58px]" alt="Web Design & Development Icon" />
@@ -75,7 +75,7 @@
                 </article>
                 <article class="flex flex-col ml-5  w-96 max-md:ml-0 max-md:w-full cCarousel-item">
                     <div class="flex flex-col grow justify-center  max-md:mt-10">
-                        <div class="flex flex-col px-7 py-14 rounded-lg shadow-lg bg-neutral-50 max-md:px-5">
+                        <div class="flex flex-col px-7 py-14 rounded-lg drop-shadow-lg bg-white max-md:px-5">
                             <img loading="lazy"
                                 src="https://cdn.builder.io/api/v1/image/assets/TEMP/7e9cac6ed32187b11c4ceaea002eeee1c73b3affe40fda4ced9cea36d64091b0?apiKey=c81a87a8b87043acac16b0e47d857063&"
                                 class="aspect-square w-[58px]" alt="Web Design & Development Icon" />

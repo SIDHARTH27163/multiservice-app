@@ -55,5 +55,6 @@ Route::post('/upload', [ImageUploadController::class, 'upload']);
 // });
 Route::prefix('touristplaces')->group(function () {
     Route::get('/', [TouristPlaceController::class, 'home'])->name('touristplaces.home');
-    // Route::get('popularplaces', [TouristPlaceController::class, 'popularPlaces'])->name('touristplaces.popularplaces');
+    Route::get('popularplaces', [TouristPlaceController::class, 'popularPlaces'])->name('touristplaces.popularplaces');
+    Route::get('{text}', [TouristPlaceController::class, 'viewtouristplace'])->name('touristplaces.viewplace');
 });

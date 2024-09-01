@@ -34,7 +34,7 @@ document.addEventListener("scroll", function () {
       toToggle4[i].classList.remove("text-rose-600");
     //   toToggle6[i].classList.remove("text-rose-600");
     }
-     header.classList.add("shadow");
+
      header.classList.add("bg-white");
     // navcontent.classList.remove("bg-gray-50");
     // navcontent.classList.add("bg-white");

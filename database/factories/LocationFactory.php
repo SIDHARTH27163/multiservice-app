@@ -21,7 +21,7 @@ class LocationFactory extends Factory
             'name' => $this->faker->city,
             'status' => 'active', // or $this->faker->randomElement(['active', 'inactive']),
             'address' => $this->faker->paragraph,
-            'image'=>'locations/vuzne2eZ580wWiekhiL2aswW4ZE29v8EYYhKgjfp.jpg'
+            'image'=>'locations/VEoueu1bxMzM3jYn1JWKbg1PT5ur0h73RKNU6UMf.jpg'
         ];
     }
 }

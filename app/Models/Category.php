@@ -13,4 +13,8 @@ class Category extends Model
         'table_name',
         'status'
     ];
+    public function touristPlaces()
+    {
+        return $this->hasMany(TouristPlace::class, 'category' , 'name'); // Adjust the foreign key if necessary
+    }
 }

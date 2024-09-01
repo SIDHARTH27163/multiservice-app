@@ -70,7 +70,10 @@
       </section>
       {{-- filters --}}
       <section class="py-3 flex lg:flex-row md:flex-row sm:flex-col flex-col px-4 space-x-2">
-        @include('components/sidebar')
+        @include('components/sidebar' , [
+            'data'=>$posts
+        ])
+
         <div class="flex-grow max-w-6xl">
 
             <div class=" flex flex-col items-center justify-center lg:p-6 md:p-5 sm:p-2 p-1">
@@ -78,11 +81,14 @@
 
                     @if($firstItem->isNotEmpty())
                     @include('components.default-card', [
+
+                        'image'=>asset('storage/' .$firstItem->first()->location->image),
                         'date' => $firstItem->first()->created_at->format('F j, Y'),
                         'title' => $firstItem->first()->title,
                         'comment' => 'Comments',
                         'location' => $firstItem->first()->location->name ?? 'Unknown Location',
-                        'description' => Str::limit($firstItem->first()->about, 140),
+                        'description' => Str::limit($firstItem->first()->about, 300),
+                        'link' => route('touristplaces.viewplace', ['text' => $firstItem->first()->title])
                     ])
                 @endif
 
@@ -93,12 +99,15 @@
 
                         @foreach($firstSet as $place)
                         @include('components.default-card', [
-                            'date' => $place->created_at->format('F j, Y'),
-                            'title' => $place->title,
-                            'comment' => 'Comments',
-                            'location' => $place->location->name ?? 'Unknown Location',
-                            'description' => Str::limit($place->about, 100),
-                        ])
+                        'image' => asset('storage/' . $place->location->image),
+                        'date' => $place->created_at->format('F j, Y'),
+                        'title' => $place->title,
+                        'comment' => 'Comments',
+                        'location' => $place->location->name ?? 'Unknown Location',
+                        'description' => Str::limit($place->about, 95),
+                        'link' => route('touristplaces.viewplace', ['text' => $place->title]) // Correctly generate the URL
+                    ])
+
                     @endforeach
 
 
@@ -108,11 +117,16 @@
                   <div class="flex flex-col font-medium text-black max-w-5xl">
                     @if($staticItem->isNotEmpty())
                     @include('components.default-card', [
+                         'image'=>asset('storage/' .$place->location->image),
                         'date' => $firstItem->first()->created_at->format('F j, Y'),
                         'title' => $firstItem->first()->title,
                         'comment' => 'Comments',
                         'location' => $firstItem->first()->location->name ?? 'Unknown Location',
-                        'description' => Str::limit($firstItem->first()->about, 140),
+                        'description' => Str::limit($firstItem->first()->about, 300),
+
+                         'link' => route('touristplaces.viewplace', ['text' => $firstItem->first()->title])
+
+
                     ])
                 @endif
 
@@ -122,12 +136,15 @@
  <section class="py-5">
     <div class="grid lg:grid-cols-3 md:grid-cols-3 sm:grid-cols-2 grid-cols-2  gap-3 py-5">
         @foreach($secondSet as $place)
-        @include('components.cropped-card', [
-           'date' => $firstItem->first()->created_at->format('F j, Y'),
-                        'title' => $firstItem->first()->title,
-                        'comment' => 'Comments',
-                        'location' => $firstItem->first()->location->name ?? 'Unknown Location',
-                        'description' => Str::limit($firstItem->first()->about, 140),
+        @include('components.default-card', [
+                           'image'=>asset('storage/' .$place->location->image),
+                            'date' => $place->created_at->format('F j, Y'),
+                            'title' => $place->title,
+                            'comment' => 'Comments',
+                            'location' => $place->location->name ?? 'Unknown Location',
+                            'description' => Str::limit($place->about, 95),
+                             'link' => route('touristplaces.viewplace', ['text' => $place->title])
+
         ])
         @endforeach
 

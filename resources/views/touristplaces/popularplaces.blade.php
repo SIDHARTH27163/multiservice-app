@@ -76,71 +76,25 @@
 
                   {{-- top cards --}}
                   <section class="py-5">
-                    <section class="flex flex-wrap gap-10 text-2xl font-bold text-black">
-                        <div class="flex flex-wrap flex-auto max-md:max-w-full items-center justify-center gap-x-4 font-Robotoregular">
-                          <button class="px-9 py-5 bg-white border-2 border-solid border-stone-300 ">
-                            South America
-                          </button>
-                          <button class="px-9 py-5 bg-white border-2 border-solid border-stone-300 ">
-                            South America
-                          </button>
-                          <button class="px-9 py-5 bg-white border-2 border-solid border-stone-300 ">
-                            South America
-                          </button>
-                          <button class="px-9 py-5 bg-white border-2 border-solid border-stone-300 ">
-                            South America
-                          </button>
 
-                        </div>
-
-                      </section>
                     <div class="grid lg:grid-cols-3 md:grid-cols-3 sm:grid-cols-2 grid-cols-2  gap-5 py-5">
 
-                        @include('components.cropped-card', [
-           'date'=>'September 17, 2021 - Tips & Tricks',
-           'title'=>'Have you read The Beach by Alex?',
-           'comment'=>'Comments',
-           'location'=>'Dharamshala'
-        ])
-                           @include('components.cropped-card', [
-           'date'=>'September 17, 2021 - Tips & Tricks',
-           'title'=>'Have you read The Beach by Alex?',
-           'comment'=>'Comments',
-           'location'=>'Dharamshala'
-        ])
-                           @include('components.cropped-card', [
-           'date'=>'September 17, 2021 - Tips & Tricks',
-           'title'=>'Have you read The Beach by Alex?',
-           'comment'=>'Comments',
-           'location'=>'Dharamshala'
-        ])
-         @include('components.cropped-card', [
-            'date'=>'September 17, 2021 - Tips & Tricks',
-            'title'=>'Have you read The Beach by Alex?',
-            'comment'=>'Comments',
-            'location'=>'Dharamshala'
-         ])
-          @include('components.cropped-card', [
-            'date'=>'September 17, 2021 - Tips & Tricks',
-            'title'=>'Have you read The Beach by Alex?',
-            'comment'=>'Comments',
-            'location'=>'Dharamshala'
-         ])
-          @include('components.cropped-card', [
-            'date'=>'September 17, 2021 - Tips & Tricks',
-            'title'=>'Have you read The Beach by Alex?',
-            'comment'=>'Comments',
-            'location'=>'Dharamshala'
-         ])
-          @include('components.cropped-card', [
-            'date'=>'September 17, 2021 - Tips & Tricks',
-            'title'=>'Have you read The Beach by Alex?',
-            'comment'=>'Comments',
-            'location'=>'Dharamshala'
-         ])
+                        @foreach($touristPlaces as $place)
+                        @include('components.default-card', [
+                             'image'=>asset('storage/' .$place->location->image),
+                            'date' => $place->created_at->format('F j, Y'),
+                            'title' => $place->title,
+                            'comment' => 'Comments',
+                            'location' => $place->location->name ?? 'Unknown Location',
+                            'description' => Str::limit($place->about, 95),
+                        ])
+                    @endforeach
 
 
                     </div>
+                    <div class="w-full justify-around items-center flex flex-x-5">
+                        {!!$touristPlaces->links()!!}
+                       </div>
                   </section>
 
 

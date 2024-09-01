@@ -44,7 +44,7 @@ class TouristPlaceSeeder extends Seeder
             $touristPlace = TouristPlace::create([
                 'location_id' => $location->id,
                 'title' => 'Tourist Place ' . $index,
-                'about' => 'About Tourist Place ' . $index,
+                'about' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.' . $index,
                 'category' => 'Category1' ,
             ]);
 
@@ -56,28 +56,29 @@ class TouristPlaceSeeder extends Seeder
 
             Activity::create([
                 'tourist_place_id' => $touristPlace->id,
-                'activity' => 'Activity ' . $index,
+                'activity' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. ' . $index,
             ]);
 
             Accommodation::create([
                 'tourist_place_id' => $touristPlace->id,
-                'accommodation' => 'Accommodation ' . $index,
+                'accommodation' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. ' . $index,
             ]);
 
             Tip::create([
                 'tourist_place_id' => $touristPlace->id,
-                'tip' => 'Tip ' . $index,
+                'tip' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. ' . $index,
             ]);
 
             Transportation::create([
                 'tourist_place_id' => $touristPlace->id,
-                'transportation' => 'Transportation ' . $index,
+                'transportation' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.' . $index,
             ]);
             $imageUrls = [
-                'places_galleries/XpM7r9aposWc8I334AOdW0aS2COfNVXQLrDwmjet.jpg',
-                'places_galleries/WT7ZGxFKcz8G9FANHrdPAVrpH2LxaokElC4q6VBN.jpg',
-                'places_galleries/Vz9yBuh8s4vwth4f0MeweaTg6Y5vo12xFFmbvmaa.jpg',
-                'places_galleries/GGaDFBl3hXyYJgAKgpkN5KdZKa1nWipM1DtpjxSR.jpg'
+                'places_galleries/7PygKBZkMVl4kuNWErN7lEMwI62BnhmueBYJgLjA.jpg',
+                'places_galleries/7VgMGuGSBEEbOlOGhD2mU63gkeqdij3XwNGBWH5Q.jpg',
+                'places_galleries/c5oHt9WhvVBslcPTbCS2tAWbQbwRvXRksvrxEOp4.jpg',
+                'places_galleries/Mda1AlA7mYaJw9PomLqwqLp7pWRk8fg33ylnme5d.jpg',
+                'places_galleries/NKLuIBTY1VmI2gadWnyPDh8NaSAN0hGGyCgdsFBU.jpg'
             ];
 
             // Create a gallery with 3 images for each TouristPlace

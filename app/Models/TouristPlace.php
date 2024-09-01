@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-
+use Illuminate\Support\Str;
 class TouristPlace extends Model
 {
     use HasFactory;
@@ -45,4 +45,5 @@ class TouristPlace extends Model
     {
         return $this->hasMany(PlacesGallery::class);
     }
+
 }

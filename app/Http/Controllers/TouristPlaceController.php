@@ -117,7 +117,7 @@ class TouristPlaceController extends Controller
     {
         // Find the TouristPlace by ID
         $touristPlace = TouristPlace::findOrFail($id);
-
+        $categories = Category::where('table_name', 'tourist_places')->get();
         // Fetch locations for the dropdown
         $locations = Location::all();
 
@@ -128,7 +128,7 @@ class TouristPlaceController extends Controller
         $transportations = $touristPlace->transportations; // Assuming a 'transportations' relationship exists
         $time_to_visit= $touristPlace->time_to_visit;
         // Pass all data to the view
-        return view('admin.manageplaces', compact('touristPlace', 'locations', 'activities', 'accommodations', 'tips', 'transportations' , 'time_to_visit'));
+        return view('admin.manageplaces', compact('touristPlace', 'locations', 'activities', 'accommodations', 'tips', 'transportations' , 'time_to_visit' , 'categories'));
     }
 
 
@@ -235,12 +235,30 @@ class TouristPlaceController extends Controller
 
         return view('admin.manageplaces', compact('touristPlaces', 'locations', 'categories'));
     }
-// methods for home user
-public function home(Request $request)
-{
-    // Define the column you want to order by
-    $orderByColumn = 'created_at'; // Replace with your column name
+    // change status
+    public function changeStatus(Request $request, $id)
+    {
+        // Validate that the ID is provided in the request
+        $touristPlace = TouristPlace::find($id);
 
+        if (!$touristPlace) {
+            return redirect()->route('touristplaces.index')->with('error', 'TouristPlace not found.');
+        }
+
+        // Toggle the status value
+        $currentStatus = $touristPlace->status;
+        // $newStatus = !$currentStatus; // If current status is true, new status will be false and vice versa
+        $newStatus = ($touristPlace->status === 'active') ? 'inactive' : 'active';
+        // Update the touristPlace status
+        $touristPlace->update([
+            'status' => $newStatus,
+        ]);
+
+        return redirect()->route('touristplaces.index')->with('success', 'Status updated successfully.');
+    }
+// methods for home user
+protected function getTouristPlaceData(Request $request, $orderByColumn = 'id', $limit = 30)
+{
     // Get the search query from the request
     $search = $request->input('search');
 
@@ -253,20 +271,97 @@ public function home(Request $request)
         })
         ->orderBy($orderByColumn, 'desc'); // Ordering by descending
 
-    // Limit the results to a higher number to handle slicing in the view
-    $touristPlaces = $query->take(30)->get();
+    // Limit the results
+    $touristPlaces = $query->take($limit)->get();
+
+    // Fetch categories and locations
+    $categories = Category::where('table_name', 'tourist_places')
+        ->where('status', 1) // Filter by status
+        ->withCount(['touristPlaces' => function ($query) {
+            $query->where('status', 'active'); // Filter tourist places by active status
+        }])
+        ->get();
+
+    $locations = Location::where('status', 'active')->get(); // Fetch all active locations for the dropdown
+
+    // Fetch the latest post
+    $latestPost = TouristPlace::with(['location'])
+        ->where('status', 'active')
+        ->orderBy('created_at', 'desc')
+        ->first();
+
+    return compact('touristPlaces', 'categories', 'locations', 'latestPost', 'search');
+}
+// common methods ends
+public function home(Request $request)
+{
+    // Fetch common data
+    $data = $this->getTouristPlaceData($request, 'title', 30);
 
     // Slice the results into the desired segments
+    $touristPlaces = $data['touristPlaces'];
     $firstItem = $touristPlaces->slice(0, 1);
     $firstSet = $touristPlaces->slice(1, 6);
     $staticItem = $touristPlaces->slice(7, 1);
     $secondSet = $touristPlaces->slice(8, 6);
+    $posts = $touristPlaces->take(5);
 
-    // Fetch categories and locations
-    $categories = Category::where('table_name', 'tourist_places')->get();
-    $locations = Location::where('status', 'active')->get(); // Fetch all active locations for the dropdown
+    // Pass data to the view
+    return view('touristplaces.touristplaces', array_merge($data, compact('firstItem', 'firstSet', 'staticItem', 'secondSet', 'posts')));
+}
 
-    return view('touristplaces.touristplaces', compact('firstItem', 'firstSet', 'staticItem', 'secondSet', 'locations', 'categories', 'search'));
+public function popularPlaces(Request $request)
+{
+    // Fetch common data
+    $data = $this->getTouristPlaceData($request, 'id', 12);
+
+    // Paginate the tourist places
+    $touristPlaces = TouristPlace::with(['location', 'activities', 'accommodations', 'tips', 'transportations', 'timeToVisits'])
+        ->where('status', 'active')
+        ->when($data['search'], function ($query, $search) {
+            return $query->where('name', 'like', "%{$search}%");
+        })
+        ->orderBy('id', 'desc')
+        ->paginate(12);
+
+    $posts = $data['touristPlaces']->take(5);
+
+    // Pass data to the view
+    return view('touristplaces.popularplaces', array_merge($data, compact('touristPlaces', 'posts')));
+}
+
+public function viewtouristplace(Request $request , $text)
+{
+    // Fetch common data
+    $data = $this->getTouristPlaceData($request, 'id', 12);
+
+    // Paginate the tourist places
+    $touristPlaces = TouristPlace::with(['location', 'activities', 'accommodations', 'tips', 'transportations', 'timeToVisits'])
+        ->where('status', 'active')
+        ->when($data['search'], function ($query, $search) {
+            return $query->where('name', 'like', "%{$search}%");
+        })
+        ->orderBy('id', 'desc')
+        ->paginate(12);
+
+    $posts = $data['touristPlaces']->take(5);
+
+    $query = TouristPlace::with([
+        'location',
+        'activities',
+        'accommodations',
+        'tips',
+        'transportations',
+        'timeToVisits',
+        'gallery' // Eager load the gallery
+    ])
+    ->where('title', $text); // Filter by title
+
+// Fetch the data
+$touristPlace = $query->get();
+
+    // Pass data to the view
+    return view('touristplaces.viewplace', array_merge($data, compact('touristPlaces', 'posts' , 'touristPlace')));
 }
 
 }
