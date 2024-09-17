@@ -4,12 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-
+use Illuminate\Support\Str;
 class TouristPlace extends Model
 {
     use HasFactory;
     protected $table = 'tourist_places';
-    protected $fillable = ['location_id', 'status', 'title', 'about'];
+    protected $fillable = ['location_id', 'category', 'status', 'title', 'about'];
 
     public function location()
     {
@@ -45,4 +45,5 @@ class TouristPlace extends Model
     {
         return $this->hasMany(PlacesGallery::class);
     }
+
 }

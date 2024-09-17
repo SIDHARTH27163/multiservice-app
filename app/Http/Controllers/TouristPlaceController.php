@@ -330,10 +330,15 @@ public function popularPlaces(Request $request)
     return view('touristplaces.popularplaces', array_merge($data, compact('touristPlaces', 'posts')));
 }
 
+<<<<<<< HEAD
 public function viewtouristplace(Request $request , $title)
 {
     $text=str_replace('-', ' ', $title);
 
+=======
+public function viewtouristplace(Request $request , $text)
+{
+>>>>>>> edb96434f884654d8f258e2032abef6d8e231acf
     // Fetch common data
     $data = $this->getTouristPlaceData($request, 'id', 12);
 
@@ -365,6 +370,7 @@ $touristPlace = $query->get();
     // Pass data to the view
     return view('touristplaces.viewplace', array_merge($data, compact('touristPlaces', 'posts' , 'touristPlace')));
 }
+<<<<<<< HEAD
 public function filterByCategory(Request $request, $text)
 {
     $category=str_replace('-', ' ', $text);
@@ -401,5 +407,7 @@ public function filterByCategory(Request $request, $text)
     // Pass data to the view
     return view('touristplaces.filterbycategory', array_merge($data, compact('touristPlaces', 'categories', 'locations', 'latestPost', 'posts')));
 }
+=======
+>>>>>>> edb96434f884654d8f258e2032abef6d8e231acf
 
 }

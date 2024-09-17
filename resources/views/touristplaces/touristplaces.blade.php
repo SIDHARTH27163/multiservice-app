@@ -88,7 +88,11 @@
                         'comment' => 'Comments',
                         'location' => $firstItem->first()->location->name ?? 'Unknown Location',
                         'description' => Str::limit($firstItem->first()->about, 300),
+<<<<<<< HEAD
                         'link' => route('touristplaces.viewplace', ['title' => $firstItem->first()->title])
+=======
+                        'link' => route('touristplaces.viewplace', ['text' => $firstItem->first()->title])
+>>>>>>> edb96434f884654d8f258e2032abef6d8e231acf
                     ])
                 @endif
 
@@ -105,7 +109,11 @@
                         'comment' => 'Comments',
                         'location' => $place->location->name ?? 'Unknown Location',
                         'description' => Str::limit($place->about, 95),
+<<<<<<< HEAD
                         'link' => route('touristplaces.viewplace',  ['title' => str_replace(' ', '-', $place->title)]) // Correctly generate the URL
+=======
+                        'link' => route('touristplaces.viewplace', ['text' => $place->title]) // Correctly generate the URL
+>>>>>>> edb96434f884654d8f258e2032abef6d8e231acf
                     ])
 
                     @endforeach
@@ -124,7 +132,11 @@
                         'location' => $firstItem->first()->location->name ?? 'Unknown Location',
                         'description' => Str::limit($firstItem->first()->about, 300),
 
+<<<<<<< HEAD
                          'link' => route('touristplaces.viewplace', ['title' => $firstItem->first()->title])
+=======
+                         'link' => route('touristplaces.viewplace', ['text' => $firstItem->first()->title])
+>>>>>>> edb96434f884654d8f258e2032abef6d8e231acf
 
 
                     ])
@@ -143,7 +155,11 @@
                             'comment' => 'Comments',
                             'location' => $place->location->name ?? 'Unknown Location',
                             'description' => Str::limit($place->about, 95),
+<<<<<<< HEAD
                             'link' => route('touristplaces.viewplace',  ['title' => str_replace(' ', '-', $place->title)])
+=======
+                             'link' => route('touristplaces.viewplace', ['text' => $place->title])
+>>>>>>> edb96434f884654d8f258e2032abef6d8e231acf
 
         ])
         @endforeach

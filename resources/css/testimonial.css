@@ -16,9 +16,10 @@
 }
 #carousel-indicators figure.active {
   padding: 1rem;
-  border-radius: 1rem;
+  border-radius: 2.5rem;
   opacity: 1;
-  box-shadow: rgba(136, 165, 191, 0.48) 6px 2px 16px 0px, rgba(255, 255, 255, 0.8) -6px -2px 16px 0px;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+  background-color:rgb(123, 235, 183);
 }
 .testimonial-item-container {
   overflow: hidden;
@@ -37,7 +38,7 @@
   cursor: pointer;
   background-color: rgba(255, 255, 255, 0.7);
   border: none;
-  padding: 1rem;
+  /* padding: 1rem; */
   border-radius: 50%;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   transition: background-color 0.3s, transform 0.3s;
