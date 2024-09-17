@@ -87,7 +87,6 @@
                             'comment' => 'Comments',
                             'location' => $place->location->name ?? 'Unknown Location',
                             'description' => Str::limit($place->about, 95),
-                            'link' => route('touristplaces.viewplace',  ['title' => str_replace(' ', '-', $place->title)])
                         ])
                     @endforeach
 
