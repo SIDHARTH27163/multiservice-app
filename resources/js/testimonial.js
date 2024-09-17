@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
       name: "Imran Khan5",
       company: "Software Engineer"
     },
-    
+
     // Add more testimonials as needed
   ];
 
@@ -48,14 +48,14 @@ document.addEventListener('DOMContentLoaded', () => {
   function createIndicatorElement(testimonial, index) {
     return `
      <figure class="flex mx-2 flex-col justify-center self-stretch ${index === 0 ? 'active' : ''}" data-index="${index}">
-        <img loading="lazy" src="${testimonial.image}" alt="Customer avatar" class="self-center max-w-full aspect-square w-[50px]" />
-       
-        <figcaption class="mt-1 text-lg font-bold tracking-normal  bg-[linear-gradient(225deg,#F76680_0%,#57007B_100%)]  text-transparent  bg-clip-text">
+        <img loading="lazy" src="${testimonial.image}" alt="Customer avatar" class="self-center max-w-full aspect-square w-[40px]" />
+
+        <figcaption class="mt-1 text-sm font-bold tracking-normal  bg-[linear-gradient(225deg,#F76680_0%,#57007B_100%)]  text-transparent  bg-clip-text">
           ${testimonial.name}
         </figcaption>
-        <p class="text-sm leading-6 text-black font-Robotomedium">${testimonial.company}</p>
+        <p class="text-xs leading-6 text-black font-Robotomedium">${testimonial.company}</p>
       </figure>
-      
+
     `;
   }
 

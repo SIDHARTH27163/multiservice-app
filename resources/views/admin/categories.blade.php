@@ -2,14 +2,14 @@
 
 @section('content')
 <div class="p-7 bg-gray-100 h-screen overflow-y-auto rounded-lg font-Robotomedium">
-@include('components.heading', ['headingText' => 'Manage Location', 'headingClass' => 'text-2xl font-normal font-Robotomedium text-rose-950 whitespace-nowrap leading-relaxed'])
+@include('components.heading', ['headingText' => 'Manage All Categories For Website', 'headingClass' => 'text-2xl font-normal font-Robotomedium text-rose-950 whitespace-nowrap leading-relaxed'])
 <div class="container w-full   mx-auto flex justify-center py-4">
     <form
-     action="{{ isset($location) ? route('managelocations.update', $location->id) : route('managelocations.store') }}"
+     action="{{ isset($category) ? route('manage-categories.update', $category->id) : route('manage-categories.store') }}"
       method="POST" enctype="multipart/form-data"
       class="lg:w-3/4 md:w-3/4 sm:w-3/4 w-full bg-white p-4 rounded-lg shadow-lg">
         @csrf
-        @if (isset($location))
+        @if (isset($category))
         @method('put')
     @else
         @method('post')
@@ -22,26 +22,26 @@
         'id' => 'name-input',
         'label' => 'Enter name',
         'error' => $errors->first('name'),
-        'value' => isset($location) ? $location->name : '',
+        'value' => isset($category) ? $category->name : '',
     ])
 
-       @include('components.textarea', [
-        'name' => 'address',
+@include('components.selectbox', [
+    'id' => "category_table",
+    'name' => "table_name",
+    'options' => [
+        'it_services' => 'IT Services',
+        'blogs' => 'Blogs',
+        'tourist_places' => 'Tourist Places',
+        'common' =>'For All Tables'
+    ],
+    'selected' => old('location_id'),
+    'placeholder' => 'Select a Table For which category is added',
+    'error' => $errors->first('table_name'),
+    'label' => 'Category'
+])
 
-        'placeholder' => 'Enter Address',
-        'class' => 'border border-slate-950 font-Montserrat',
-        'id' => 'description-input',
-        'label' => 'Enter Address',
-        'error' => $errors->first('address'),
-        'value' => isset($location) ? $location->address : '',
-    ])
 
-    @include('components.file', [
-        'name' => 'image',
-        'label' => 'Choose Image',
-        'error' => $errors->first('image'),
-        'value' => isset($location) ? $location->image : '',
-    ])
+
 
     @include('components.button', [
         'name' => 'submit',
@@ -49,7 +49,7 @@
         'label' => 'Submit',
         'role' => 'submit',
         'class' =>
-            'font-Montserrat select-none rounded-lg bg-gradient-to-tr from-slate-950 to-gray-800 py-3 px-6 text-center align-middle font-sans text-ls font-bold uppercase text-white shadow-md shadow-gray-900/10 transition-all hover:shadow-lg hover:shadow-gray-900/20 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none',
+            'font-Montserrat select-none rounded-lg bg-gradient-to-tr from-slate-950 to-gray-800 py-2.5 px-6 text-center align-middle font-sans text-ls font-bold uppercase text-white shadow-md shadow-gray-900/10 transition-all hover:shadow-lg hover:shadow-gray-900/20 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none',
     ])
 
     </form>
@@ -64,7 +64,7 @@
     @endif
 </div>
 <div class="max-w-6xl mx-auto">
-    @if (isset($locations))
+    @if (isset($categories))
     <div class=" w-full mx-auto">
         <div class="dark:bg-gray-900">
             <div class="mx-auto ">
@@ -107,10 +107,10 @@
                         <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                             <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                                 <tr>
-                                    <th scope="col" class="px-4 py-3">image</th>
+
+                                    <th scope="col" class="px-4 py-3">Name</th>
                                     <th scope="col" class="px-4 py-3">Status</th>
-                                    <th scope="col" class="px-4 py-3">Location Name</th>
-                                    <th scope="col" class="px-4 py-3">Address</th>
+                                    <th scope="col" class="px-4 py-3">Table Name</th>
 
                                     <th scope="col" class="px-4 py-3">
                                         <span>Actions</span>
@@ -118,21 +118,22 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($locations as $location)
+                                @foreach ($categories as $category)
                                     <tr class="border-b dark:border-gray-700 font-Robotomedium">
-                                        <td class="px-4 py-3">
-                                            <img src="{{ asset('storage/' . $location->image) }}" alt="Image"
-                                                width="100">
-                                        </td>
-                                        <td class="px-4 py-3">
-                                            {{$location->status}}
-                                        </td>
-                                        <td class="px-4 py-3">{{ $location->name }}</td>
-                                        <td class="px-4 py-3">{{ $location->address }}</td>
 
-                                        <td class="py-10 flex items-center">
+                                        <td class="px-4 py-3">{{ $category->name }}</td>
+                                        <td class="px-4 py-3">
+                                            @if(  $category->status == 1)
+                                            Active
+                                            @else
+                                            In Active
+                                            @endif
+                                        </td>
+                                        <td class="px-4 py-3">{{ $category->table_name }}</td>
+
+                                        <td class="py-10 flex items-center gap-2">
                                             <div class="flex items-center p-1">
-                                                <a href="{{ route('managelocations.edit', $location->id) }}"
+                                                <a href="{{ route('manage-categories.edit', $category->id) }}"
                                                     class="text-yellow-600 hover:underline">
                                                     <svg
                                                     xmlns="http://www.w3.org/2000/svg" fill="none"
@@ -144,7 +145,7 @@
 
                                                     <!-- Edit Icon -->
                                                 </a>
-                                                <form action="{{ route('managelocations.destroy', $location->id) }}"
+                                                <form action="{{ route('manage-categories.destroy', $category->id) }}"
                                                     method="POST" style="display:inline;">
                                                     @csrf
                                                     @method('DELETE')
@@ -158,12 +159,12 @@
                                                     </svg>
                                                     </button>
                                                 </form>
-                                                <form action="{{ route('managelocations.toggle-status', $location->id) }}" method="POST" style="display: inline;">
+                                                <form action="{{ route('categories.toggle-status', $category->id) }}" method="POST" style="display: inline;">
                                                     @csrf
                                                     <button type="submit" class=" text-red-600  rounded flex items-center space-x-2">
                                                         <!-- SVG icon for activate/deactivate -->
                                                         <svg class="size-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                            @if ($location->status == 'active')
+                                                            @if ($category->status)
                                                                 <!-- Icon for Deactivate -->
                                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
                                                             @else
@@ -174,6 +175,8 @@
 
                                                     </button>
                                                 </form>
+
+
                                             </div>
                                         </td>
                                     </tr>

@@ -95,13 +95,48 @@ class LocationController extends Controller
     // Remove the specified location from storage.
     public function destroy(Location $location , $id)
     {
-        if ($location->image) {
-            Storage::disk('public')->delete($location->image);
+        try {
+            // Find the ITService record by ID
+            $location = Location::findOrFail($id);
+            if ($location->image) {
+                Storage::disk('public')->delete($location->image);
+            }
+
+            // Delete the record
+            $location->delete();
+
+            // Redirect with success message
+            return redirect()->route('managelocations.index')->with('success', 'Location deleted successfully.');
+        } catch (\Exception $e) {
+            // Log the error for debugging
+            \Log::error('Failed to delete IT Service: ' . $e->getMessage());
+
+            // Redirect with error message
+            return redirect()->route('managelocations.index')->with('error', 'Failed to delete IT Service.');
         }
 
-        $location->delete();
 
-        return redirect()->route('managelocations.index')->with('success', 'Location deleted successfully.');
+
+    }
+    public function changeStatus(Request $request, $id)
+    {
+        // Validate that the ID is provided in the request
+        $location = Location::find($id);
+
+        if (!$location) {
+            return redirect()->route('managelocations.index')->with('error', 'Location not found.');
+        }
+
+        // Toggle the status value
+        $currentStatus = $location->status;
+        // $newStatus = !$currentStatus; // If current status is true, new status will be false and vice versa
+        $newStatus = ($location->status === 'active') ? 'inactive' : 'active';
+        // Update the location status
+        $location->update([
+            'status' => $newStatus,
+        ]);
+
+        return redirect()->route('managelocations.index')->with('success', 'Location status updated successfully.');
     }
 }
 
