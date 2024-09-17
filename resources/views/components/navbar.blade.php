@@ -17,7 +17,7 @@
           </svg>
         </button>
       </div>
-      <div class="shadow-b-tealsky w-full font-Robotomedium flex-grow lg:flex lg:items-center lg:w-auto hidden mt-1 lg:mt-0  lg:bg-transparent  p-2 lg:p-0 z-20 " id="nav-content">
+      <div class=" w-full font-Robotomedium flex-grow lg:flex lg:items-center lg:w-auto hidden mt-1 lg:mt-0  lg:bg-transparent  p-2 lg:p-0 z-20 " id="nav-content">
         <ul class="list-reset lg:flex justify-end flex-1 items-center py-1">
         <li class="mr-0">
             <a id="navitem" class="toggleColour hover:bg-slate-900 hover:text-white text-rose-600 inline-block text-xl hover:shadow-lg hover:rounded-xl   no-underline  transform transition hover:scale-105 duration-500 ease-in-out py-2 px-4 font-bold" href="/">Home</a>
