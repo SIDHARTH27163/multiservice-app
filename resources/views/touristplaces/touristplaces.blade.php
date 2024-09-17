@@ -88,7 +88,7 @@
                         'comment' => 'Comments',
                         'location' => $firstItem->first()->location->name ?? 'Unknown Location',
                         'description' => Str::limit($firstItem->first()->about, 300),
-                        'link' => route('touristplaces.viewplace', ['text' => $firstItem->first()->title])
+                        'link' => route('touristplaces.viewplace', ['title' => $firstItem->first()->title])
                     ])
                 @endif
 
@@ -105,7 +105,7 @@
                         'comment' => 'Comments',
                         'location' => $place->location->name ?? 'Unknown Location',
                         'description' => Str::limit($place->about, 95),
-                        'link' => route('touristplaces.viewplace', ['text' => $place->title]) // Correctly generate the URL
+                        'link' => route('touristplaces.viewplace',  ['title' => str_replace(' ', '-', $place->title)]) // Correctly generate the URL
                     ])
 
                     @endforeach
@@ -124,7 +124,7 @@
                         'location' => $firstItem->first()->location->name ?? 'Unknown Location',
                         'description' => Str::limit($firstItem->first()->about, 300),
 
-                         'link' => route('touristplaces.viewplace', ['text' => $firstItem->first()->title])
+                         'link' => route('touristplaces.viewplace', ['title' => $firstItem->first()->title])
 
 
                     ])
@@ -143,7 +143,7 @@
                             'comment' => 'Comments',
                             'location' => $place->location->name ?? 'Unknown Location',
                             'description' => Str::limit($place->about, 95),
-                             'link' => route('touristplaces.viewplace', ['text' => $place->title])
+                            'link' => route('touristplaces.viewplace',  ['title' => str_replace(' ', '-', $place->title)])
 
         ])
         @endforeach
