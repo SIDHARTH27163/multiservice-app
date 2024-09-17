@@ -78,7 +78,7 @@
                   <section class="py-5">
 
                     <div class="grid lg:grid-cols-3 md:grid-cols-3 sm:grid-cols-2 grid-cols-2  gap-5 py-5">
-
+                        @if($touristPlaces->count())
                         @foreach($touristPlaces as $place)
                         @include('components.default-card', [
                              'image'=>asset('storage/' .$place->location->image),
@@ -90,7 +90,9 @@
                             'link' => route('touristplaces.viewplace',  ['title' => str_replace(' ', '-', $place->title)])
                         ])
                     @endforeach
-
+                    @else
+                    <p>No tourist places found for this category.</p>
+                @endif
 
                     </div>
                     <div class="w-full justify-around items-center flex flex-x-5">

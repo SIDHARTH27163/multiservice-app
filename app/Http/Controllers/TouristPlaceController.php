@@ -330,8 +330,10 @@ public function popularPlaces(Request $request)
     return view('touristplaces.popularplaces', array_merge($data, compact('touristPlaces', 'posts')));
 }
 
-public function viewtouristplace(Request $request , $text)
+public function viewtouristplace(Request $request , $title)
 {
+    $text=str_replace('-', ' ', $title);
+
     // Fetch common data
     $data = $this->getTouristPlaceData($request, 'id', 12);
 
@@ -362,6 +364,42 @@ $touristPlace = $query->get();
 
     // Pass data to the view
     return view('touristplaces.viewplace', array_merge($data, compact('touristPlaces', 'posts' , 'touristPlace')));
+}
+public function filterByCategory(Request $request, $text)
+{
+    $category=str_replace('-', ' ', $text);
+
+    // Fetch common data
+    $data = $this->getTouristPlaceData($request, 'title', 30);
+
+    // Filter tourist places by the selected category
+    $touristPlaces = TouristPlace::with(['location', 'activities', 'accommodations', 'tips', 'transportations', 'timeToVisits'])
+        ->where('status', 'active')
+        ->where('category', $category) // Filter by category
+        ->orderBy('title', 'asc') // You can adjust the order as needed
+        ->paginate(12);
+
+    // Fetch the latest post
+    $latestPost = TouristPlace::with(['location'])
+        ->where('status', 'active')
+        ->orderBy('created_at', 'desc')
+        ->first();
+
+    // Fetch categories and locations
+    $categories = Category::where('table_name', 'tourist_places')
+        ->where('status', 1) // Filter by status
+        ->withCount(['touristPlaces' => function ($query) {
+            $query->where('status', 'active'); // Filter tourist places by active status
+        }])
+        ->get();
+
+    $locations = Location::where('status', 'active')->get(); // Fetch all active locations for the dropdown
+
+    // Fetch the top 5 popular places
+    $posts = $touristPlaces->take(5);
+
+    // Pass data to the view
+    return view('touristplaces.filterbycategory', array_merge($data, compact('touristPlaces', 'categories', 'locations', 'latestPost', 'posts')));
 }
 
 }
